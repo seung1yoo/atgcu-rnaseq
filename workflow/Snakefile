@@ -1,4 +1,69 @@
-# Main entrypoint of the workflow. 
-# Please follow the best practices: 
-# https://snakemake.readthedocs.io/en/stable/snakefiles/best_practices.html,
-# in particular regarding the standardized folder structure mentioned there. 
+# siyoo / seung1yoo / seung1.yoo / Seung-il Yoo
+# pip install pyfiglet
+import pyfiglet
+import logging
+#logging.basicConfig(level=logging.DEBUG)
+#logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.WARNING)
+from pathlib import Path
+import yaml
+
+#---------  CONFIG set up  ---------------
+print("{0}".format("="*100))
+print(pyfiglet.figlet_format("{0}atgcu-rnaseq".format(" "*12)))
+
+configfile: "config/config.yml"
+include: "rules/common.smk"
+
+print("{0} info.configuration {0}".format("="*40))
+config_set_up = ConfigSetUp()
+config_set_up.load_conf_sample()
+config_set_up.sort_sample_names()
+config_set_up.load_conf_ref()
+config_set_up.load_conf_param()
+config_set_up.print_info_config()
+print("{0}".format("="*100))
+
+final_target = FinalTarget("anl", "src")
+final_target.add_fastp_pe()
+final_target.add_star_align()
+#-----------------------------------------
+
+rule all:
+    message: "Compiling all output"
+    input: final_target.files
+
+include: "rules/fastp.smk"
+include: "rules/star.smk"
+
+#include: "./rules/fastqc.smk"       # fastqc QC 
+#include: "./rules/cutadapt.smk"     # cutadapt trimming
+#
+#include: "./rules/star.smk"         # quant mode with star
+#
+#include: "./rules/rsem.smk"         # abundance w/rsem
+#include: "./rules/featurecount.smk" # abundance w/featurecount
+#include: "./rules/htseqcount.smk"   # abundance w/htseqcount
+#include: "./rules/cufflinks.smk"    # abundance w/cufflinks
+#
+#if len(config["comps"]) > 0:
+#    include: "./rules/tcc.smk"      # deg anlaysis
+#    include: "./rules/cuffdiff.smk" # deg anlaysis
+#    include: "./rules/goseq.smk"    # goseq
+#
+#if len(config["timeseries_comps"]) > 0:
+#    include: "./rules/timeseries.smk" # timeseries analysis
+#
+#include: "./rules/bwa.smk"          # rules specific to BWA 
+#include: "./rules/rseqc.smk"        # run RSeQC
+#include: "./rules/statistics.smk"   # make statistics
+#
+#if len(config["comps"]) > 0:
+#    include: "./rules/report.smk"           # reporting
+#    include: "./rules/report_comps.smk"     # reporting for deg & go
+#    include: "./rules/publish_comps.smk"    # publish
+#else:
+#    include: "./rules/report.smk"     # reporting
+#    include: "./rules/publish.smk"    # reporting
+
+

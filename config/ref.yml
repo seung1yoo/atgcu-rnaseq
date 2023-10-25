@@ -1,0 +1,4 @@
+grch38_ens109:
+  genome_fasta: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/H_sapiens_GRCh38_ENS109.genome.fa
+  genemodel_gtf: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/H_sapiens_GRCh38_ENS109.geneset.all.gtf
+  genome_star_index: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/star-genome

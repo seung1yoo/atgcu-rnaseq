@@ -1,0 +1,2 @@
+fastp:
+  adapters: "--adapter_sequence ACGGCTAGCTA --adapter_sequence_r2 AGATCGGAAGAGCACACGTCTGAACTCCAGTCAC"
