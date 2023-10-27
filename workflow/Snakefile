@@ -27,6 +27,8 @@ print("{0}".format("="*100))
 final_target = FinalTarget("anl", "src")
 final_target.add_fastp_pe()
 final_target.add_star_align()
+final_target.add_hisat2_align()
+final_target.add_multiqc()
 #-----------------------------------------
 
 rule all:
@@ -35,6 +37,8 @@ rule all:
 
 include: "rules/fastp.smk"
 include: "rules/star.smk"
+include: "rules/hisat2.smk"
+include: "rules/multiqc.smk"
 
 #include: "./rules/fastqc.smk"       # fastqc QC 
 #include: "./rules/cutadapt.smk"     # cutadapt trimming

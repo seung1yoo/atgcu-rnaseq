@@ -57,7 +57,15 @@ class FinalTarget:
     def add_star_align(self):
         for sample_name in config["sorted_sample_names"]:
             self.files.append(self.anl_path / "star" / sample_name / "aligned.bam")
+            self.files.append(self.anl_path / "star" / sample_name / "Log.final.out")
+            self.files.append(self.anl_path / "star" / sample_name / "ReadsPerGene.out.tab")
 
+    def add_hisat2_align(self):
+        for sample_name in config["sorted_sample_names"]:
+            self.files.append(self.anl_path / "hisat2" / sample_name / "aligned.bam")
+
+    def add_multiqc(self):
+        self.files.append(self.anl_path / "multiqc" / "multiqc.html")
 
 #---------- functions ----------
 
