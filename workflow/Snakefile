@@ -8,28 +8,38 @@ import logging
 from pathlib import Path
 import yaml
 
-#---------  CONFIG set up  ---------------
-print("{0}".format("="*100))
-print(pyfiglet.figlet_format("{0}atgcu-rnaseq".format(" "*12)))
-
+#-- config setting
 configfile: "config/config.yml"
 include: "rules/common.smk"
 
-print("{0} info.configuration {0}".format("="*40))
+print("{0}".format("="*100))
+print(pyfiglet.figlet_format("{0}atgcu-rnaseq".format(" "*12)))
+
 config_set_up = ConfigSetUp()
 config_set_up.load_conf_sample()
 config_set_up.sort_sample_names()
 config_set_up.load_conf_ref()
 config_set_up.load_conf_param()
+
+print("{0} info.configuration {0}".format("="*40))
 config_set_up.print_info_config()
 print("{0}".format("="*100))
 
 final_target = FinalTarget("anl", "src")
+
+#-- main stream
 final_target.add_fastp_pe()
+final_target.add_tophat_align()
+final_target.add_cufflinks()
+
+#-- qc stream
 final_target.add_star_align()
 final_target.add_hisat2_align()
+
+#-- reporting stream
 final_target.add_multiqc()
-#-----------------------------------------
+
+#----------------------------------------
 
 rule all:
     message: "Compiling all output"
@@ -37,7 +47,9 @@ rule all:
 
 include: "rules/fastp.smk"
 include: "rules/star.smk"
+include: "rules/tophat.smk"
 include: "rules/hisat2.smk"
+include: "rules/cufflinks.smk"
 include: "rules/multiqc.smk"
 
 #include: "./rules/fastqc.smk"       # fastqc QC 

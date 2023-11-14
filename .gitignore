@@ -4,6 +4,7 @@ logs/**
 .snakemake
 .snakemake/**
 snakemake-tutorial/**
-readyfastq
 anl/**
 src/**
+benchmarks/**
+readyfastq

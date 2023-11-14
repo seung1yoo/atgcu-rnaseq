@@ -2,27 +2,36 @@ samples:
   RNA_A7_1:
     fastq_1: readyfastq/RNA_A7_1_R1.fastq.gz
     fastq_2: readyfastq/RNA_A7_1_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_A7_2:
     fastq_1: readyfastq/RNA_A7_2_R1.fastq.gz
     fastq_2: readyfastq/RNA_A7_2_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_A7_3:
     fastq_1: readyfastq/RNA_A7_3_R1.fastq.gz
     fastq_2: readyfastq/RNA_A7_3_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_B2_1:
     fastq_1: readyfastq/RNA_B2_1_R1.fastq.gz
     fastq_2: readyfastq/RNA_B2_1_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_B2_2:
     fastq_1: readyfastq/RNA_B2_2_R1.fastq.gz
     fastq_2: readyfastq/RNA_B2_2_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_B2_3:
     fastq_1: readyfastq/RNA_B2_3_R1.fastq.gz
     fastq_2: readyfastq/RNA_B2_3_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_YiP3_1:
     fastq_1: readyfastq/RNA_YiP3_1_R1.fastq.gz
     fastq_2: readyfastq/RNA_YiP3_1_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_YiP3_2:
     fastq_1: readyfastq/RNA_YiP3_2_R1.fastq.gz
     fastq_2: readyfastq/RNA_YiP3_2_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"
   RNA_YiP3_3:
     fastq_1: readyfastq/RNA_YiP3_3_R1.fastq.gz
     fastq_2: readyfastq/RNA_YiP3_3_R2.fastq.gz
+    cuff_librarytype: "fr-unstranded"

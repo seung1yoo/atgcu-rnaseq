@@ -1,16 +1,22 @@
 
 
 
-rule multiqc_dir:
+
+rule multiqc:
     input:
-        expand("anl/star/{sample}/Log.final.out", sample=config["sorted_sample_names"]),
+        expand(["anl/fastp/{sample}/{sample}.fastp.json",
+                "anl/star/{sample}/Log.final.out",
+                "anl/tophat/{sample}/align_summary.txt",
+                "anl/hisat2/{sample}/{sample}.stats"],
+                sample=config["sample_names"])
     output:
-        "anl/multiqc/multiqc.html",
+        "anl/multiqc/multiqc_report.html",
         directory("anl/multiqc/multiqc_data"),
-    params:
-        extra="--data-dir",  # Optional: extra parameters for multiqc.
-    log:
-        "logs/multiqc.log",
-    wrapper:
-        "master/bio/multiqc"
+    log: "logs/multiqc.log",
+    conda: "envs/multiqc.yml"
+    shell:
+        "multiqc"
+        " --outdir anl/multiqc"
+        " {input}"
+
 

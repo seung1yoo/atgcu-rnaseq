@@ -1,0 +1,26 @@
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - _libgcc_mutex=0.1=main
+  - _openmp_mutex=5.1=1_gnu
+  - bowtie2=2.2.5=py27h6bb024c_5
+  - ca-certificates=2023.05.30=h06a4308_0
+  - certifi=2020.6.20=pyhd3eb1b0_3
+  - gdbm=1.18=hd4cb3f1_4
+  - libffi=3.4.4=h6a678d5_0
+  - libgcc-ng=11.2.0=h1234567_1
+  - libgomp=11.2.0=h1234567_1
+  - libstdcxx-ng=11.2.0=h1234567_1
+  - ncurses=6.4=h6a678d5_0
+  - perl=5.34.0=h5eee18b_2
+  - pip=19.3.1=py27_0
+  - python=2.7.18=h42bf7aa_3
+  - readline=8.2=h5eee18b_0
+  - setuptools=44.0.0=py27_0
+  - sqlite=3.41.2=h5eee18b_0
+  - tk=8.6.12=h1ccaba5_0
+  - tophat=2.1.1=py27_3
+  - wheel=0.37.1=pyhd3eb1b0_0
+  - zlib=1.2.13=h5eee18b_0

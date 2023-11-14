@@ -26,7 +26,7 @@ class ConfigSetUp:
         for sample_name in config["samples"]:
             sample_names.append(sample_name)
         sample_names.sort()
-        config["sorted_sample_names"] = sample_names
+        config["sample_names"] = sample_names
 
     def print_info_config(self):
         for _key in sorted(config):
@@ -48,24 +48,34 @@ class FinalTarget:
         self.src_path = Path(srcdir)
 
     def add_fastp_pe(self):
-        for sample_name in config["sorted_sample_names"]:
-            self.files.append(self.anl_path / "fastp" / f"{sample_name}_R1.fastq.gz")
-            self.files.append(self.anl_path / "fastp" / f"{sample_name}_R2.fastq.gz")
-            self.files.append(self.anl_path / "fastp" / f"{sample_name}.fastp.html")
-            self.files.append(self.anl_path / "fastp" / f"{sample_name}.fastp.json")
+        for sample_name in config["sample_names"]:
+            self.files.append(self.anl_path / "fastp" / sample_name / f"{sample_name}_R1.fastq.gz")
+            self.files.append(self.anl_path / "fastp" / sample_name / f"{sample_name}_R2.fastq.gz")
+            self.files.append(self.anl_path / "fastp" / sample_name / f"{sample_name}.fastp.html")
+            self.files.append(self.anl_path / "fastp" / sample_name / f"{sample_name}.fastp.json")
 
     def add_star_align(self):
-        for sample_name in config["sorted_sample_names"]:
+        for sample_name in config["sample_names"]:
             self.files.append(self.anl_path / "star" / sample_name / "aligned.bam")
             self.files.append(self.anl_path / "star" / sample_name / "Log.final.out")
             self.files.append(self.anl_path / "star" / sample_name / "ReadsPerGene.out.tab")
 
     def add_hisat2_align(self):
-        for sample_name in config["sorted_sample_names"]:
+        for sample_name in config["sample_names"]:
             self.files.append(self.anl_path / "hisat2" / sample_name / "aligned.bam")
 
+    def add_tophat_align(self):
+        for sample_name in config["sample_names"]:
+            self.files.append(self.anl_path / "tophat" / sample_name / "accepted_hits.bam")
+            self.files.append(self.anl_path / "tophat" / sample_name / "align_summary.txt")
+
+    def add_cufflinks(self):
+        for sample_name in config["sample_names"]:
+            self.files.append(self.anl_path / "cufflinks" / sample_name / "genes.fpkm_tracking")
+            self.files.append(self.anl_path / "cufflinks" / sample_name / "isoforms.fpkm_tracking")
+
     def add_multiqc(self):
-        self.files.append(self.anl_path / "multiqc" / "multiqc.html")
+        self.files.append(self.anl_path / "multiqc" / "multiqc_report.html")
 
 #---------- functions ----------
 
@@ -74,4 +84,8 @@ def find_fastp_pe_input(wildcards):
     fastqs.append(config["samples"][wildcards.sample]["fastq_1"])
     fastqs.append(config["samples"][wildcards.sample]["fastq_2"])
     return fastqs
+
+
+
+
 

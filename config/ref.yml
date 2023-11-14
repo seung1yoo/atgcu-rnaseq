@@ -3,4 +3,5 @@ grch38_ens109:
   genemodel_gtf: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/H_sapiens_GRCh38_ENS109.geneset.all.gtf
   genome_star_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/star_index
   genome_hisat2_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/hisat2_index
+  genome_tophat_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/tophat_index/genome
 
