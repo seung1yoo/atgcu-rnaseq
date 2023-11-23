@@ -1,7 +1,7 @@
 
 rule cufflinks:
     input:
-        sortBam="anl/star/{sample}/aligned.bam",
+        bam="anl/tophat/{sample}/accepted_hits.bam",
     output:
         fpkmGene="anl/cufflinks/{sample}/genes.fpkm_tracking",
         fpkmTran="anl/cufflinks/{sample}/isoforms.fpkm_tracking"
@@ -11,9 +11,7 @@ rule cufflinks:
     threads: 8
     message: "Running Cufflinks on {wildcards.sample}"
     benchmark: "benchmarks/run_cufflinks.{sample}.txt"
-    log: 
-        stdout="logs/cufflinks/{sample}.stdout",
-        stderr="logs/cufflinks/{sample}.stderr",
+    log: "logs/cufflinks/{sample}.log"
     conda: "envs/cufflinks.yml"
     shell:
         "cufflinks -p {threads}"
@@ -22,50 +20,142 @@ rule cufflinks:
         " --library-type {params.libraryType}"
         " -G {config[genemodel_gtf]}"
         " -o {params.outdir}"
-        " {input.sortBam}"
+        " {input.bam}"
 
-#rule merge_cufflinks:
+#rule parse_cufflinks:
 #    input:
-#        fpkm_gene=expand("analysis/cufflinks/{sample_name}/genes.fpkm_tracking", sample_name=config['ordered_sample_list']),
-#        fpkm_tran=expand("analysis/cufflinks/{sample_name}/isoforms.fpkm_tracking", sample_name=config['ordered_sample_list'])
+#        expand("anl/cufflinks/{sample}/genes.fpkm_tracking", sample=config["sample_names"])
 #    output:
-#        tsv_gene="analysis/cufflinks/genes.fpkm.tsv",
-#        tsv_tran="analysis/cufflinks/transcripts.fpkm.tsv"
-#    wildcard_constraints:
-#        sample_name="[^/]+"
-#    params:
-#        sample_names=expand("{sample_name}", sample_name=config['ordered_sample_list'])
-#    message: "Merge cufflinks outputs"
-#    benchmark:
-#        "benchmarks/merge_cufflinks.txt"
+#        "anl/table/abundance.genes.fpkm.all.xls",
+#        "anl/table/abundance.genes.fpkm.exp.xls",
+#        "anl/table/abundance.genes.stats.exp.xls",
+#        "anl/table/abundance.genes.stats.coexp.xls",
+#        "anl/table/abundance.isoforms.fpkm.all.xls",
+#        "anl/table/abundance.isoforms.fpkm.exp.xls",
+#        "anl/table/abundance.isoforms.stats.exp.xls",
+#        "anl/table/abundance.isoforms.stats.coexp.xls"
+#    log: "logs/parse_cuffnorm.log"
 #    shell:
-#        "python {config[pipedir]}/modules_quant/scripts/parser.py"
-#        " merge_cufflinks"
-#        " {config[workdir]}"
-#        " --sample-id-s {params.sample_names}"
-#
+#        "python workflow/scripts/parser.py cufflinks"
+#        " --outprefix anl/table/abundance"
+#        " --gene2desc {config[anno_gene2desc]}"
+#        " --tran2desc {config[anno_tran2desc]}"
 
-rule cufflinks:
+rule cuffquant:
     input:
-        sortBam="anl/star/{sample}/aligned.bam",
+        bam="anl/tophat/{sample}/accepted_hits.bam",
     output:
-        fpkmGene="anl/cufflinks/{sample}/genes.fpkm_tracking",
-        fpkmTran="anl/cufflinks/{sample}/isoforms.fpkm_tracking"
+        cxb="anl/cuffquant/{sample}/abundances.cxb"
     params:
-        outdir='anl/cufflinks/{sample}',
+        outdir='anl/cuffquant/{sample}',
         libraryType=lambda wildcards: config["samples"][wildcards.sample]["cuff_librarytype"]
     threads: 8
-    message: "Running Cufflinks on {wildcards.sample}"
-    benchmark: "benchmarks/run_cufflinks.{sample}.txt"
-    log: 
-        stdout="logs/cufflinks/{sample}.stdout",
-        stderr="logs/cufflinks/{sample}.stderr",
+    message: "Running Cuffquant on {wildcards.sample}"
+    benchmark: "benchmarks/cuffquant.{sample}.txt"
+    log: "logs/cuffquant/{sample}.log"
     conda: "envs/cufflinks.yml"
     shell:
-        "cufflinks -p {threads}"
+        "cuffquant -p {threads}"
+        " -o {params.outdir}"
         " --multi-read-correct"
         " --frag-bias-correct {config[genome_fasta]}"
         " --library-type {params.libraryType}"
-        " -G {config[genemodel_gtf]}"
+        " {config[genemodel_gtf]}"
+        " {input.bam}"
+
+rule cuffnorm:
+    input:
+        expand("anl/cuffquant/{sample}/abundances.cxb", sample=config["sample_names"])
+    output:
+        "anl/cuffnorm/genes.fpkm_table",
+        "anl/cuffnorm/isoforms.fpkm_table"
+    params:
+        outdir='anl/cuffnorm',
+        method='classic-fpkm',
+        outformat='simple-table',
+        labels=",".join(config["sample_names"])
+    threads: 8
+    message: "Running Cuffnorm"
+    benchmark: "benchmarks/cuffnorm.txt"
+    log: "logs/cuffnorm.log"
+    conda: "envs/cufflinks.yml"
+    shell:
+        "cuffnorm -p {threads}"
         " -o {params.outdir}"
-        " {input.sortBam}"
+        " --library-norm-method {params.method}"
+        " --output-format {params.outformat}"
+        " --labels {params.labels}"
+        " {config[genemodel_gtf]}"
+        " {input}"
+
+rule parse_cuffnorm:
+    input:
+        "anl/cuffnorm/genes.fpkm_table",
+        "anl/cuffnorm/isoforms.fpkm_table"
+    output:
+        "anl/table/abundance.genes.fpkm.all.xls",
+        "anl/table/abundance.genes.fpkm.exp.xls",
+        "anl/table/abundance.genes.stats.exp.xls",
+        "anl/table/abundance.genes.stats.coexp.xls",
+        "anl/table/abundance.isoforms.fpkm.all.xls",
+        "anl/table/abundance.isoforms.fpkm.exp.xls",
+        "anl/table/abundance.isoforms.stats.exp.xls",
+        "anl/table/abundance.isoforms.stats.coexp.xls"
+    log: "logs/parse_cuffnorm.log"
+    shell:
+        "python workflow/scripts/parser.py cuffnorm"
+        " --outprefix anl/table/abundance"
+        " --gene2desc {config[anno_gene2desc]}"
+        " --tran2desc {config[anno_tran2desc]}"
+
+rule cuffdiff:
+    input:
+        expand("anl/cuffquant/{sample}/abundances.cxb", sample=config["sample_names"])
+    output:
+        "anl/cuffdiff/{compare}/gene_exp.diff",
+        "anl/cuffdiff/{compare}/isoform_exp.diff"
+    params:
+        control_cxb=lambda wildcards: find_cxb(wildcards.compare, "control"),
+        treatment_cxb=lambda wildcards: find_cxb(wildcards.compare, "treatment"),
+        labels=lambda wildcards: make_cuffdiff_label(wildcards.compare),
+        outdir='anl/cuffdiff/{compare}',
+        dispersion_method='pooled',
+        norm_method='geometric'
+    threads: 8
+    message: "Running Cuffdiff {wildcards.compare}"
+    benchmark: "benchmarks/cuffdiff.{compare}.txt"
+    log: "logs/cuffdiff/{compare}.log"
+    conda: "envs/cufflinks.yml"
+    shell:
+        "cuffdiff -p {threads}"
+        " -o {params.outdir}"
+        " --dispersion-method {params.dispersion_method}"
+        " --library-norm-method {params.norm_method}"
+        " --labels {params.labels}"
+        " {config[genemodel_gtf]}"
+        " {params.control_cxb}"
+        " {params.treatment_cxb}"
+
+        
+rule parse_cuffdiff:
+    input:
+        expand(["anl/cuffdiff/{compare}/gene_exp.diff", 
+                "anl/cuffdiff/{compare}/isoform_exp.diff"],
+               compare=config["compare_names"])
+    output:
+        "anl/table/deg.genes.xls",
+        "anl/table/deg.genes.stats.xls",
+        "anl/table/deg.isoforms.xls",
+        "anl/table/deg.isoforms.stats.xls",
+    log: "logs/parse_cuffdiff.log"
+    params:
+        log2fc_criteria=0.584,
+        p_criteria=0.05
+    shell:
+        "python workflow/scripts/parser.py cuffdiff"
+        " --outprefix anl/table/deg"
+        " --gene2desc {config[anno_gene2desc]}"
+        " --tran2desc {config[anno_tran2desc]}"
+        " --log2fc-criteria {params.log2fc_criteria}"
+        " --p-criteria {params.p_criteria}"
+

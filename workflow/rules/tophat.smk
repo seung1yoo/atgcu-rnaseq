@@ -44,7 +44,9 @@ rule tophat_align:
     output:
         bam="anl/tophat/{sample}/accepted_hits.bam",
         summay="anl/tophat/{sample}/align_summary.txt"
-    log: "logs/tophat_align.{sample}.log"
+    log: 
+        stdout="logs/tophat/{sample}.stdout",
+        stderr="logs/tophat/{sample}.stderr"
     benchmark: "benchmarks/tophat_align.{sample}.tsv"
     params:
         idx=config["genome_tophat_index"],
@@ -62,5 +64,19 @@ rule tophat_align:
         " {params.idx} {input.fq1} {input.fq2}"
         
 
+rule parse_tophat:
+    input:
+        expand("anl/tophat/{sample}/align_summary.txt", sample=config["sample_names"])
+    output:
+        "anl/table/alignment_stats.tophat.xls"
+    params:
+        outprefix="anl/table/alignment_stats.tophat",
+        target_dir="anl/tophat"
+    log: "logs/parse_tophat.log"
+    shell:
+        "python workflow/scripts/parser.py tophat"
+        " --outprefix {params.outprefix}"
+        " --target-dir {params.target_dir}"
+        
     
 

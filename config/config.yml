@@ -1,4 +1,5 @@
-conf_sample: config/sample.yml
 conf_ref: config/ref.yml
 ref_id: grch38_ens109
 conf_param: config/param.yml
+conf_sample: config/sample.yml
+conf_compare: config/compare.yml

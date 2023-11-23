@@ -16,10 +16,12 @@ print("{0}".format("="*100))
 print(pyfiglet.figlet_format("{0}atgcu-rnaseq".format(" "*12)))
 
 config_set_up = ConfigSetUp()
-config_set_up.load_conf_sample()
-config_set_up.sort_sample_names()
 config_set_up.load_conf_ref()
 config_set_up.load_conf_param()
+config_set_up.load_conf_sample()
+config_set_up.sort_sample_names()
+config_set_up.load_conf_compare()
+config_set_up.sort_compare_names()
 
 print("{0} info.configuration {0}".format("="*40))
 config_set_up.print_info_config()
@@ -31,6 +33,9 @@ final_target = FinalTarget("anl", "src")
 final_target.add_fastp_pe()
 final_target.add_tophat_align()
 final_target.add_cufflinks()
+final_target.add_cuffquant()
+final_target.add_cuffnorm()
+final_target.add_cuffdiff()
 
 #-- qc stream
 final_target.add_star_align()
@@ -38,6 +43,11 @@ final_target.add_hisat2_align()
 
 #-- reporting stream
 final_target.add_multiqc()
+final_target.add_parse_fastp()
+final_target.add_parse_tophat()
+#final_target.add_parse_cufflinks()
+final_target.add_parse_cuffnorm()
+final_target.add_parse_cuffdiff()
 
 #----------------------------------------
 
@@ -81,5 +91,6 @@ include: "rules/multiqc.smk"
 #else:
 #    include: "./rules/report.smk"     # reporting
 #    include: "./rules/publish.smk"    # reporting
+
 
 

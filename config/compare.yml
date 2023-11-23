@@ -1,0 +1,27 @@
+compares:
+  DEG001:
+    control:
+      group_name: YiP3
+      samples:
+        - RNA_YiP3_1
+        - RNA_YiP3_2
+        - RNA_YiP3_3
+    treatment:
+      group_name: A7
+      samples:
+        - RNA_A7_1
+        - RNA_A7_2
+        - RNA_A7_3
+  DEG002:
+    control:
+      group_name: YiP3
+      samples:
+        - RNA_YiP3_1
+        - RNA_YiP3_2
+        - RNA_YiP3_3
+    treatment:
+      group_name: B2
+      samples:
+        - RNA_B2_1
+        - RNA_B2_2
+        - RNA_B2_3

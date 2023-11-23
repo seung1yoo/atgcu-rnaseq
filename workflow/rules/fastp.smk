@@ -16,3 +16,35 @@ rule fastp_pe:
     wrapper:
         "master/bio/fastp"
 
+rule parse_fastp_raw:
+    input:
+        expand("anl/fastp/{sample}/{sample}.fastp.json", sample=config["sample_names"])
+    output:
+        "anl/table/sequencing_stats.raw.xls"
+    log: "logs/parse_fastp_raw.log"
+    params:
+        outprefix="anl/table/sequencing_stats.raw",
+        target_dir="anl/fastp",
+        target_tag="before_filtering"
+    shell:
+        "python workflow/scripts/parser.py fastp"
+        " --outprefix {params.outprefix}"
+        " --target-dir {params.target_dir}"
+        " --target-tag {params.target_tag}"
+
+rule parse_fastp_clean:
+    input:
+        expand("anl/fastp/{sample}/{sample}.fastp.json", sample=config["sample_names"])
+    output:
+        "anl/table/sequencing_stats.clean.xls"
+    log: "logs/parse_fastp_clean.log"
+    params:
+        outprefix="anl/table/sequencing_stats.clean",
+        target_dir="anl/fastp",
+        target_tag="after_filtering"
+    shell:
+        "python workflow/scripts/parser.py fastp"
+        " --outprefix {params.outprefix}"
+        " --target-dir {params.target_dir}"
+        " --target-tag {params.target_tag}"
+

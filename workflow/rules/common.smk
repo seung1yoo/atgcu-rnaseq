@@ -11,6 +11,11 @@ class ConfigSetUp:
         config["samples"] = yaml.safe_load(fh)["samples"]
         fh.close()
 
+    def load_conf_compare(self):
+        fh = open(config["conf_compare"])
+        config["compares"] = yaml.safe_load(fh)["compares"]
+        fh.close()
+
     def load_conf_ref(self):
         fh = open(config["conf_ref"])
         config.update(yaml.safe_load(fh)[config["ref_id"]])
@@ -28,10 +33,17 @@ class ConfigSetUp:
         sample_names.sort()
         config["sample_names"] = sample_names
 
+    def sort_compare_names(self):
+        compare_names = list()
+        for compare_name in config["compares"]:
+            compare_names.append(compare_name)
+        compare_names.sort()
+        config["compare_names"] = compare_names
+
     def print_info_config(self):
         for _key in sorted(config):
             # dictionary depth level 2
-            if _key in ["samples", "fastp"]:
+            if _key in ["samples", "compares", "fastp"]:
                 for _sub_key in sorted(config[_key]):
                     print(f"{_key}\t{_sub_key}\t{config[_key][_sub_key]}")
             # dictionary depth level 1
@@ -74,8 +86,54 @@ class FinalTarget:
             self.files.append(self.anl_path / "cufflinks" / sample_name / "genes.fpkm_tracking")
             self.files.append(self.anl_path / "cufflinks" / sample_name / "isoforms.fpkm_tracking")
 
+    def add_cuffquant(self):
+        for sample_name in config["sample_names"]:
+            self.files.append(self.anl_path / "cuffquant" / sample_name / "abundances.cxb")
+
+    def add_cuffnorm(self):
+        self.files.append(self.anl_path / "cuffnorm" / "genes.fpkm_table")
+        self.files.append(self.anl_path / "cuffnorm" / "isoforms.fpkm_table")
+
+    def add_cuffdiff(self):
+        for compare in config["compares"]:
+            self.files.append(self.anl_path / "cuffdiff" / compare / "gene_exp.diff")
+            self.files.append(self.anl_path / "cuffdiff" / compare / "isoform_exp.diff")
+
     def add_multiqc(self):
         self.files.append(self.anl_path / "multiqc" / "multiqc_report.html")
+
+    def add_parse_fastp(self):
+        self.files.append(self.anl_path / "table" / "sequencing_stats.raw.xls")
+        self.files.append(self.anl_path / "table" / "sequencing_stats.clean.xls")
+
+    def add_parse_tophat(self):
+        self.files.append(self.anl_path / "table" / "alignment_stats.tophat.xls")
+
+    def add_parse_cufflinks(self):
+        self.files.append(self.anl_path / "table" / "abundance.genes.fpkm.all.xls")
+        self.files.append(self.anl_path / "table" / "abundance.genes.fpkm.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.genes.stats.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.genes.stats.coexp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.fpkm.all.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.fpkm.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.stats.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.stats.coexp.xls")
+
+    def add_parse_cuffnorm(self):
+        self.files.append(self.anl_path / "table" / "abundance.genes.fpkm.all.xls")
+        self.files.append(self.anl_path / "table" / "abundance.genes.fpkm.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.genes.stats.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.genes.stats.coexp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.fpkm.all.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.fpkm.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.stats.exp.xls")
+        self.files.append(self.anl_path / "table" / "abundance.isoforms.stats.coexp.xls")
+
+    def add_parse_cuffdiff(self):
+        self.files.append(self.anl_path / "table" / "deg.genes.xls")
+        self.files.append(self.anl_path / "table" / "deg.genes.stats.xls")
+        self.files.append(self.anl_path / "table" / "deg.isoforms.xls")
+        self.files.append(self.anl_path / "table" / "deg.isoforms.stats.xls")
 
 #---------- functions ----------
 
@@ -84,6 +142,23 @@ def find_fastp_pe_input(wildcards):
     fastqs.append(config["samples"][wildcards.sample]["fastq_1"])
     fastqs.append(config["samples"][wildcards.sample]["fastq_2"])
     return fastqs
+
+def find_cxb(compare, group):
+    cxbs = list()
+    for sample in config["compares"][compare][group]["samples"]:
+        cxbs.append(f"anl/cuffquant/{sample}/abundances.cxb")
+    return ",".join(cxbs)
+
+def make_cuffdiff_label(compare):
+    _label = list()
+    _label.append(config["compares"][compare]["control"]["group_name"])
+    _label.append(config["compares"][compare]["treatment"]["group_name"])
+    return ",".join(_label)
+
+
+
+
+
 
 
 

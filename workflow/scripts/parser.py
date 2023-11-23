@@ -15,14 +15,14 @@ class Fastp:
         self.json_path_dic = dict()
 
     def find_json_path(self, target_dir):
-        for json_path in Path(target_dir).glob("*.fastp.json"):
+        for json_path in Path(target_dir).rglob("*.fastp.json"):
             sample_name = json_path.parts[-1].replace(".fastp.json", "")
             logging.info(f"Found {str(json_path)} of {sample_name}")
             self.json_path_dic.setdefault(sample_name, json.load(json_path.open("r")))
         return 1
 
-    def write_summary_tsv(self, tag, target_dir):
-        outfp = self.wkdir / f"{self.outprefix}.{target_dir}.tsv"
+    def write_summary_tsv(self, tag):
+        outfp = self.wkdir / f"{self.outprefix}.xls"
         logging.info(f"writing fastp summary table... {str(outfp)}")
         outfh = outfp.open("w")
         headers = ["Samples"]
@@ -64,16 +64,16 @@ class Fastp:
 
 
 class Tophat:
-    def __init__(self, wkdir, outprefix):
+    def __init__(self, wkdir, outprefix, target_dir):
         self.wkdir = Path(wkdir)
         self.input_read_type = None
 
         # parse align_summary.txt files
         self.align_summary_path_dic = dict()
         self.align_summary_info_dic = dict()
-        self.find_align_summary_path("tophat")
+        self.find_align_summary_path(target_dir)
         self.parse_align_summary_path()
-        self.write_align_summary_tsv(self.wkdir / f"{outprefix}.align_summary.tsv")
+        self.write_align_summary_tsv(Path(f"{outprefix}.xls"))
 
     def write_align_summary_tsv(self, outfp):
         logging.info(f"writing align summary table... {str(outfp)}")
@@ -181,7 +181,7 @@ class Tophat:
         return 1
 
     def find_align_summary_path(self, tophat_dir):
-        for align_summary_path in Path(tophat_dir).glob("*/align_summary.txt"):
+        for align_summary_path in Path(tophat_dir).rglob("*/align_summary.txt"):
             sample_name = align_summary_path.parts[-2]
             logging.info(f"Found {str(align_summary_path)} of {sample_name}")
             self.align_summary_path_dic.setdefault(sample_name, align_summary_path)
@@ -550,7 +550,7 @@ class Cuffdiff:
         self.gene_info_dic = dict()
         self.gene_diff_dic = dict()
         self.gene_stat_dic = dict()
-        self.find_exp_diff_path("gene", "cuffdiff")
+        self.find_exp_diff_path("gene", "anl/cuffdiff")
         self.parse_exp_diff_path("gene")
         self.stat_exp_diff("gene")
 
@@ -558,7 +558,7 @@ class Cuffdiff:
         self.tran_path_dic = dict()
         self.tran_info_dic = dict()
         self.tran_diff_dic = dict()
-        self.find_exp_diff_path("isoform", "cuffdiff")
+        self.find_exp_diff_path("isoform", "anl/cuffdiff")
         self.parse_exp_diff_path("isoform")
         self.stat_exp_diff("isoform")
 
@@ -709,7 +709,7 @@ class Cuffdiff:
                 headers.append('{0}:{1}'.format(comp_name, _diff_col))
         headers.extend(_info_col_s)
 
-        outfp = self.wkdir / f"{self.outprefix}.{_outfn}"
+        outfp = Path(f"{self.outprefix}.{_outfn}")
         logging.info(f"writing DEG table... {str(outfp)}")
         outfh = outfp.open("w")
         outfh.write("{0}\n".format("\t".join([str(x) for x in headers])))
@@ -743,7 +743,7 @@ class Cuffdiff:
         headers.append("Delta_Pstv")
         headers.append("Delta_Ngtv")
 
-        outfp = self.wkdir / f"{self.outprefix}.{_outfn}"
+        outfp = Path(f"{self.outprefix}.{_outfn}")
         logging.info(f"writing DEG Stat table... {str(outfp)}")
         outfh = outfp.open("w")
         outfh.write("{0}\n".format("\t".join([str(x) for x in headers])))
@@ -772,69 +772,64 @@ def main(args):
 
         fastp = Fastp(args.wkdir, args.outprefix)
         fastp.find_json_path(args.target_dir)
-        if args.target_dir in ['cleanfastq']:
-            fastp.write_summary_tsv("after_filtering", args.target_dir)
-            #fastp.write_summary_tsv("before_filtering", args.target_dir) # test
-        else:
-            fastp.write_summary_tsv("before_filtering", args.target_dir)
-
+        fastp.write_summary_tsv(args.target_tag)
 
     elif args.biotool in ['tophat']:
 
-        tophat = Tophat(args.wkdir, args.outprefix)
+        tophat = Tophat(args.wkdir, args.outprefix, args.target_dir)
 
     elif args.biotool in ['cufflinks']:
 
         cufflinks = Cufflinks(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
 
-        cufflinks.find_fpkm_tracking_path("genes", "cufflinks")
+        cufflinks.find_fpkm_tracking_path("genes", "anl/cufflinks")
         if cufflinks.gene2desc_fp.is_file():
             cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "BIOTYPE", "biotype")
             cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "SYMBOL", "symbol")
             cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "DESCRIPTION", "description")
         cufflinks.parse_fpkm_tracking_path("genes")
-        cufflinks.write_fpkm_tsv("genes", 0.0, cufflinks.wkdir / f"{args.outprefix}.genes.all.fpkm.tsv")
-        cufflinks.write_fpkm_tsv("genes", 0.3, cufflinks.wkdir / f"{args.outprefix}.genes.exp.fpkm.tsv")
-        cufflinks.write_stat_exp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stat.expressed.tsv")
-        cufflinks.write_stat_coexp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stat.co-expressed.tsv")
+        cufflinks.write_fpkm_tsv("genes", 0.0, cufflinks.wkdir / f"{args.outprefix}.genes.fpkm.all.xls")
+        cufflinks.write_fpkm_tsv("genes", 0.3, cufflinks.wkdir / f"{args.outprefix}.genes.fpkm.exp.xls")
+        cufflinks.write_stat_exp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stats.exp.xls")
+        cufflinks.write_stat_coexp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stats.coexp.xls")
 
-        cufflinks.find_fpkm_tracking_path("isoforms", "cufflinks")
+        cufflinks.find_fpkm_tracking_path("isoforms", "anl/cufflinks")
         if cufflinks.tran2desc_fp.is_file():
             cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "BIOTYPE", "biotype")
             cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "SYMBOL", "symbol")
             cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "DESCRIPTION", "description")
         cufflinks.parse_fpkm_tracking_path("isoforms")
-        cufflinks.write_fpkm_tsv("isoforms", 0.0, cufflinks.wkdir / f"{args.outprefix}.trans.all.fpkm.tsv")
-        cufflinks.write_fpkm_tsv("isoforms", 0.3, cufflinks.wkdir / f"{args.outprefix}.trans.exp.fpkm.tsv")
-        cufflinks.write_stat_exp("isoforms", cufflinks.wkdir / f"{args.outprefix}.trans.stat.expressed.tsv")
-        cufflinks.write_stat_coexp("isoforms", cufflinks.wkdir / f"{args.outprefix}.trans.stat.co-expressed.tsv")
+        cufflinks.write_fpkm_tsv("isoforms", 0.0, cufflinks.wkdir / f"{args.outprefix}.isoforms.fpkm.all.xls")
+        cufflinks.write_fpkm_tsv("isoforms", 0.3, cufflinks.wkdir / f"{args.outprefix}.isoforms.fpkm.exp.xls")
+        cufflinks.write_stat_exp("isoforms", cufflinks.wkdir / f"{args.outprefix}.isoforms.stats.exp.xls")
+        cufflinks.write_stat_coexp("isoforms", cufflinks.wkdir / f"{args.outprefix}.isoforms.stats.coexp.xls")
 
 
     elif args.biotool in ['cuffnorm']:
 
         cuffnorm = Cuffnorm(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
 
-        cuffnorm.find_fpkm_table_path("genes", "cuffnorm")
+        cuffnorm.find_fpkm_table_path("genes", "anl/cuffnorm")
         if cuffnorm.gene2desc_fp.is_file():
             cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "BIOTYPE", "biotype")
             cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "SYMBOL", "symbol")
             cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "DESCRIPTION", "description")
         cuffnorm.parse_fpkm_table_path("genes")
-        cuffnorm.write_fpkm_tsv("genes", 0.0, cuffnorm.wkdir / f"{args.outprefix}.genes.all.fpkm.tsv")
-        cuffnorm.write_fpkm_tsv("genes", 0.3, cuffnorm.wkdir / f"{args.outprefix}.genes.exp.fpkm.tsv")
-        cuffnorm.write_stat_exp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stat.expressed.tsv")
-        cuffnorm.write_stat_coexp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stat.co-expressed.tsv")
+        cuffnorm.write_fpkm_tsv("genes", 0.0, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.all.xls")
+        cuffnorm.write_fpkm_tsv("genes", 0.3, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.exp.xls")
+        cuffnorm.write_stat_exp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.exp.xls")
+        cuffnorm.write_stat_coexp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.coexp.xls")
 
-        cuffnorm.find_fpkm_table_path("isoforms", "cuffnorm")
+        cuffnorm.find_fpkm_table_path("isoforms", "anl/cuffnorm")
         if cuffnorm.tran2desc_fp.is_file():
             cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "BIOTYPE", "biotype")
             cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "SYMBOL", "symbol")
             cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "DESCRIPTION", "description")
         cuffnorm.parse_fpkm_table_path("isoforms")
-        cuffnorm.write_fpkm_tsv("isoforms", 0.0, cuffnorm.wkdir / f"{args.outprefix}.trans.all.fpkm.tsv")
-        cuffnorm.write_fpkm_tsv("isoforms", 0.3, cuffnorm.wkdir / f"{args.outprefix}.trans.exp.fpkm.tsv")
-        cuffnorm.write_stat_exp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.trans.stat.expressed.tsv")
-        cuffnorm.write_stat_coexp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.trans.stat.co-expressed.tsv")
+        cuffnorm.write_fpkm_tsv("isoforms", 0.0, cuffnorm.wkdir / f"{args.outprefix}.isoforms.fpkm.all.xls")
+        cuffnorm.write_fpkm_tsv("isoforms", 0.3, cuffnorm.wkdir / f"{args.outprefix}.isoforms.fpkm.exp.xls")
+        cuffnorm.write_stat_exp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.isoforms.stats.exp.xls")
+        cuffnorm.write_stat_coexp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.isoforms.stats.coexp.xls")
 
 
     elif args.biotool in ['cuffdiff']:
@@ -851,10 +846,10 @@ def main(args):
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "DESCRIPTION", "Description")
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "BIOTYPE", "Biotype")
 
-        cuffdiff.write_deg_tsv("gene", "genes.deg.tsv")
-        cuffdiff.write_deg_tsv("isoform", "trans.deg.tsv")
-        cuffdiff.write_deg_stat_tsv("gene", "genes.deg.stat.tsv")
-        cuffdiff.write_deg_stat_tsv("isoform", "trans.deg.stat.tsv")
+        cuffdiff.write_deg_tsv("gene", "genes.xls")
+        cuffdiff.write_deg_tsv("isoform", "isoforms.xls")
+        cuffdiff.write_deg_stat_tsv("gene", "genes.stats.xls")
+        cuffdiff.write_deg_stat_tsv("isoform", "isoforms.stats.xls")
 
 
 
@@ -867,9 +862,11 @@ if __name__=='__main__':
     subparser = subparsers.add_parser("fastp")
     subparser.add_argument("--outprefix", default="MultiParser.Fastp.Raw") # MultiParser.Fastp.Clean if cleanfastq
     subparser.add_argument("--target-dir", default="readyfastq") # cleanfastq
+    subparser.add_argument("--target-tag", default="after_filtering", choices=("after_filtering", "before_filtering"))
 
     subparser = subparsers.add_parser("tophat")
     subparser.add_argument("--outprefix", default="MultiParser.Tophat")
+    subparser.add_argument("--target-dir", default="anl/tophat")
 
     subparser = subparsers.add_parser("cufflinks")
     subparser.add_argument("--outprefix", default="MultiParser.Cufflinks")
