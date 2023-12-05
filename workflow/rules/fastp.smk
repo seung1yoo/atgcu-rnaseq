@@ -10,8 +10,9 @@ rule fastp_pe:
                  "anl/fastp/{sample}/{sample}_R2.fastq.gz"],
         html="anl/fastp/{sample}/{sample}.fastp.html",
         json="anl/fastp/{sample}/{sample}.fastp.json"
-    log:
-        "logs/fastp/{sample}.log"
+    log: "logs/fastp_pe/{sample}.log"
+    benchmark: "benchmarks/fastp_pe/{sample}.tsv"
+    message: "fastp_pe is in progress on {wildcards.sample}"
     threads: 10
     wrapper:
         "master/bio/fastp"
@@ -22,6 +23,8 @@ rule parse_fastp_raw:
     output:
         "anl/table/sequencing_stats.raw.xls"
     log: "logs/parse_fastp_raw.log"
+    benchmark: "benchmarks/parse_fastp_raw.tsv"
+    message: "parse_fastp_raw is being run"
     params:
         outprefix="anl/table/sequencing_stats.raw",
         target_dir="anl/fastp",
@@ -31,6 +34,7 @@ rule parse_fastp_raw:
         " --outprefix {params.outprefix}"
         " --target-dir {params.target_dir}"
         " --target-tag {params.target_tag}"
+        " > {log} 2>&1"
 
 rule parse_fastp_clean:
     input:
@@ -38,6 +42,8 @@ rule parse_fastp_clean:
     output:
         "anl/table/sequencing_stats.clean.xls"
     log: "logs/parse_fastp_clean.log"
+    benchmark: "benchmarks/parse_fastp_clean.tsv"
+    message: "parse_fastp_clean is being run"
     params:
         outprefix="anl/table/sequencing_stats.clean",
         target_dir="anl/fastp",
@@ -47,4 +53,5 @@ rule parse_fastp_clean:
         " --outprefix {params.outprefix}"
         " --target-dir {params.target_dir}"
         " --target-tag {params.target_tag}"
+        " > {log} 2>&1"
 

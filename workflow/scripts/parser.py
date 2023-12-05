@@ -4,6 +4,7 @@ import math
 import json
 from pathlib import Path
 import logging
+import re
 logging.basicConfig(level=logging.DEBUG)
 #logging.basicConfig(level=logging.INFO)
 
@@ -453,7 +454,7 @@ class Cuffnorm(Cufflinks):
                 break
 
         for _sample_name in _sample_names:
-            sample_name = _sample_name.rstrip("_0")
+            sample_name = re.sub("_0$", "", _sample_name)
             if sample_name not in self.sample_names:
                 self.sample_names.append(sample_name)
 

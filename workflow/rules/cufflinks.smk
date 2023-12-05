@@ -1,17 +1,17 @@
 
 rule cufflinks:
     input:
-        bam="anl/tophat/{sample}/accepted_hits.bam",
+        bam=rules.tophat_align.output.bam
     output:
         fpkmGene="anl/cufflinks/{sample}/genes.fpkm_tracking",
         fpkmTran="anl/cufflinks/{sample}/isoforms.fpkm_tracking"
     params:
         outdir='anl/cufflinks/{sample}',
         libraryType=lambda wildcards: config["samples"][wildcards.sample]["cuff_librarytype"]
-    threads: 8
-    message: "Running Cufflinks on {wildcards.sample}"
-    benchmark: "benchmarks/run_cufflinks.{sample}.txt"
     log: "logs/cufflinks/{sample}.log"
+    benchmark: "benchmarks/cufflinks/{sample}.tsv"
+    message: "cufflinks is in progress on {wildcards.sample}"
+    threads: 8
     conda: "envs/cufflinks.yml"
     shell:
         "cufflinks -p {threads}"
@@ -21,6 +21,7 @@ rule cufflinks:
         " -G {config[genemodel_gtf]}"
         " -o {params.outdir}"
         " {input.bam}"
+        " > {log} 2>&1"
 
 #rule parse_cufflinks:
 #    input:
@@ -43,16 +44,16 @@ rule cufflinks:
 
 rule cuffquant:
     input:
-        bam="anl/tophat/{sample}/accepted_hits.bam",
+        bam=rules.tophat_align.output.bam
     output:
         cxb="anl/cuffquant/{sample}/abundances.cxb"
+    log: "logs/cuffquant/{sample}.log"
+    benchmark: "benchmarks/cuffquant/{sample}.tsv"
+    message: "cuffquant is in progress on {wildcards.sample}"
     params:
         outdir='anl/cuffquant/{sample}',
         libraryType=lambda wildcards: config["samples"][wildcards.sample]["cuff_librarytype"]
     threads: 8
-    message: "Running Cuffquant on {wildcards.sample}"
-    benchmark: "benchmarks/cuffquant.{sample}.txt"
-    log: "logs/cuffquant/{sample}.log"
     conda: "envs/cufflinks.yml"
     shell:
         "cuffquant -p {threads}"
@@ -62,6 +63,7 @@ rule cuffquant:
         " --library-type {params.libraryType}"
         " {config[genemodel_gtf]}"
         " {input.bam}"
+        " > {log} 2>&1"
 
 rule cuffnorm:
     input:
@@ -69,15 +71,15 @@ rule cuffnorm:
     output:
         "anl/cuffnorm/genes.fpkm_table",
         "anl/cuffnorm/isoforms.fpkm_table"
+    log: "logs/cuffnorm.log"
+    benchmark: "benchmarks/cuffnorm.tsv"
+    message: "cuffnorm is being run"
     params:
         outdir='anl/cuffnorm',
         method='classic-fpkm',
         outformat='simple-table',
         labels=",".join(config["sample_names"])
     threads: 8
-    message: "Running Cuffnorm"
-    benchmark: "benchmarks/cuffnorm.txt"
-    log: "logs/cuffnorm.log"
     conda: "envs/cufflinks.yml"
     shell:
         "cuffnorm -p {threads}"
@@ -87,6 +89,7 @@ rule cuffnorm:
         " --labels {params.labels}"
         " {config[genemodel_gtf]}"
         " {input}"
+        " > {log} 2>&1"
 
 rule parse_cuffnorm:
     input:
@@ -102,11 +105,14 @@ rule parse_cuffnorm:
         "anl/table/abundance.isoforms.stats.exp.xls",
         "anl/table/abundance.isoforms.stats.coexp.xls"
     log: "logs/parse_cuffnorm.log"
+    benchmark: "benchmarks/parse_cuffnorm.tsv"
+    message: "parse_cuffnorm is being run"
     shell:
         "python workflow/scripts/parser.py cuffnorm"
         " --outprefix anl/table/abundance"
         " --gene2desc {config[anno_gene2desc]}"
         " --tran2desc {config[anno_tran2desc]}"
+        " > {log} 2>&1"
 
 rule cuffdiff:
     input:
@@ -114,6 +120,9 @@ rule cuffdiff:
     output:
         "anl/cuffdiff/{compare}/gene_exp.diff",
         "anl/cuffdiff/{compare}/isoform_exp.diff"
+    log: "logs/cuffdiff/{compare}.log"
+    benchmark: "benchmarks/cuffdiff/{compare}.tsv"
+    message: "cuffdiff is in progress on {wildcards.compare}"
     params:
         control_cxb=lambda wildcards: find_cxb(wildcards.compare, "control"),
         treatment_cxb=lambda wildcards: find_cxb(wildcards.compare, "treatment"),
@@ -122,9 +131,6 @@ rule cuffdiff:
         dispersion_method='pooled',
         norm_method='geometric'
     threads: 8
-    message: "Running Cuffdiff {wildcards.compare}"
-    benchmark: "benchmarks/cuffdiff.{compare}.txt"
-    log: "logs/cuffdiff/{compare}.log"
     conda: "envs/cufflinks.yml"
     shell:
         "cuffdiff -p {threads}"
@@ -135,6 +141,7 @@ rule cuffdiff:
         " {config[genemodel_gtf]}"
         " {params.control_cxb}"
         " {params.treatment_cxb}"
+        " > {log} 2>&1"
 
         
 rule parse_cuffdiff:
@@ -148,6 +155,8 @@ rule parse_cuffdiff:
         "anl/table/deg.isoforms.xls",
         "anl/table/deg.isoforms.stats.xls",
     log: "logs/parse_cuffdiff.log"
+    benchmark: "benchmarks/parse_cuffdiff.tsv"
+    message: "parse_cuffdiff is being run"
     params:
         log2fc_criteria=0.584,
         p_criteria=0.05

@@ -68,13 +68,14 @@ class FinalTarget:
 
     def add_star_align(self):
         for sample_name in config["sample_names"]:
-            self.files.append(self.anl_path / "star" / sample_name / "aligned.bam")
+            self.files.append(self.anl_path / "star" / sample_name / "Aligned.sortedByCoord.out.bam")
             self.files.append(self.anl_path / "star" / sample_name / "Log.final.out")
             self.files.append(self.anl_path / "star" / sample_name / "ReadsPerGene.out.tab")
 
     def add_hisat2_align(self):
         for sample_name in config["sample_names"]:
             self.files.append(self.anl_path / "hisat2" / sample_name / "aligned.bam")
+            self.files.append(self.anl_path / "hisat2" / sample_name / f"{sample_name}.stats")
 
     def add_tophat_align(self):
         for sample_name in config["sample_names"]:
@@ -134,6 +135,14 @@ class FinalTarget:
         self.files.append(self.anl_path / "table" / "deg.genes.stats.xls")
         self.files.append(self.anl_path / "table" / "deg.isoforms.xls")
         self.files.append(self.anl_path / "table" / "deg.isoforms.stats.xls")
+
+    def add_arriba(self):
+        for sample_name in config["sample_names"]:
+            self.files.append(self.anl_path / "arriba" / sample_name / "Aligned.out.bam")
+            self.files.append(self.anl_path / "arriba" / sample_name / "Aligned.sortedByCoord.out.bam")
+            self.files.append(self.anl_path / "arriba" / sample_name / "fusions.tsv")
+            self.files.append(self.anl_path / "arriba" / sample_name / "fusions.discarded.tsv")
+        
 
 #---------- functions ----------
 

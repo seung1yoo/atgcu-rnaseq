@@ -29,22 +29,24 @@ print("{0}".format("="*100))
 
 final_target = FinalTarget("anl", "src")
 
-#-- main stream
+#-- primary analysis
 final_target.add_fastp_pe()
+final_target.add_parse_fastp()
 final_target.add_tophat_align()
+final_target.add_parse_tophat()
+final_target.add_star_align()
+
 final_target.add_cufflinks()
 final_target.add_cuffquant()
 final_target.add_cuffnorm()
 final_target.add_cuffdiff()
 
-#-- qc stream
-final_target.add_star_align()
+#-- gene-fusion analysis
 final_target.add_hisat2_align()
+final_target.add_arriba()
 
 #-- reporting stream
 final_target.add_multiqc()
-final_target.add_parse_fastp()
-final_target.add_parse_tophat()
 #final_target.add_parse_cufflinks()
 final_target.add_parse_cuffnorm()
 final_target.add_parse_cuffdiff()
@@ -61,6 +63,7 @@ include: "rules/tophat.smk"
 include: "rules/hisat2.smk"
 include: "rules/cufflinks.smk"
 include: "rules/multiqc.smk"
+include: "rules/arriba.smk"
 
 #include: "./rules/fastqc.smk"       # fastqc QC 
 #include: "./rules/cutadapt.smk"     # cutadapt trimming

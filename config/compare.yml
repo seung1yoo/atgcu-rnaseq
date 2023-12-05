@@ -1,27 +1,392 @@
 compares:
   DEG001:
     control:
-      group_name: YiP3
+      group_name: AortaStudy008_KMS_2989072
       samples:
-        - RNA_YiP3_1
-        - RNA_YiP3_2
-        - RNA_YiP3_3
+      - AortaStudy008_KMS_2989072
     treatment:
-      group_name: A7
+      group_name: Others
       samples:
-        - RNA_A7_1
-        - RNA_A7_2
-        - RNA_A7_3
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
   DEG002:
     control:
-      group_name: YiP3
+      group_name: AortaStudy019_SHW_6741757
       samples:
-        - RNA_YiP3_1
-        - RNA_YiP3_2
-        - RNA_YiP3_3
+      - AortaStudy019_SHW_6741757
     treatment:
-      group_name: B2
+      group_name: Others
       samples:
-        - RNA_B2_1
-        - RNA_B2_2
-        - RNA_B2_3
+      - AortaStudy008_KMS_2989072
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG003:
+    control:
+      group_name: AortaStudy021_KHI_9006818
+      samples:
+      - AortaStudy021_KHI_9006818
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG004:
+    control:
+      group_name: AortaStudy027_KHW_6942048
+      samples:
+      - AortaStudy027_KHW_6942048
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG005:
+    control:
+      group_name: AortaStudy029_PAR_6993441
+      samples:
+      - AortaStudy029_PAR_6993441
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG006:
+    control:
+      group_name: AortaStudy038_KYS_9008159
+      samples:
+      - AortaStudy038_KYS_9008159
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG007:
+    control:
+      group_name: AortaStudy110_LJY_6925206
+      samples:
+      - AortaStudy110_LJY_6925206
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG008:
+    control:
+      group_name: reference_1
+      samples:
+      - reference_1
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG009:
+    control:
+      group_name: AortaStudy031_JHS_2842771
+      samples:
+      - AortaStudy031_JHS_2842771
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG010:
+    control:
+      group_name: AortaStudy072_KJS_9140144
+      samples:
+      - AortaStudy072_KJS_9140144
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG011:
+    control:
+      group_name: AortaStudy109_JKS_9285070
+      samples:
+      - AortaStudy109_JKS_9285070
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG012:
+    control:
+      group_name: AortaStudy112_JWJ_9286913
+      samples:
+      - AortaStudy112_JWJ_9286913
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG013:
+    control:
+      group_name: AortaStudy118_LJS_9282535
+      samples:
+      - AortaStudy118_LJS_9282535
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG014:
+    control:
+      group_name: AortaStudy125_KWJ_10330327
+      samples:
+      - AortaStudy125_KWJ_10330327
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy134_EHD_6370358
+      - reference_2
+  DEG015:
+    control:
+      group_name: AortaStudy134_EHD_6370358
+      samples:
+      - AortaStudy134_EHD_6370358
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - reference_2
+  DEG016:
+    control:
+      group_name: reference_2
+      samples:
+      - reference_2
+    treatment:
+      group_name: Others
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - reference_1
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
+  DEG017:
+    control:
+      group_name: Reference
+      samples:
+      - reference_1
+      - reference_2
+    treatment:
+      group_name: Case
+      samples:
+      - AortaStudy008_KMS_2989072
+      - AortaStudy019_SHW_6741757
+      - AortaStudy021_KHI_9006818
+      - AortaStudy027_KHW_6942048
+      - AortaStudy029_PAR_6993441
+      - AortaStudy038_KYS_9008159
+      - AortaStudy110_LJY_6925206
+      - AortaStudy031_JHS_2842771
+      - AortaStudy072_KJS_9140144
+      - AortaStudy109_JKS_9285070
+      - AortaStudy112_JWJ_9286913
+      - AortaStudy118_LJS_9282535
+      - AortaStudy125_KWJ_10330327
+      - AortaStudy134_EHD_6370358
