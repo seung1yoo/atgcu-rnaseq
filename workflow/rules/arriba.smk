@@ -15,7 +15,7 @@ rule star4arriba:
     params:
         outprefix="anl/arriba/{sample}/"
     threads: 8
-    conda: "envs/arriba.yml"
+    conda: "../envs/arriba.yml"
     shell:
         "STAR"
         " --runThreadN {threads}" 
@@ -47,7 +47,7 @@ rule arriba:
     params:
         outprefix="anl/arriba/{sample}/"
     threads: 8
-    conda: "envs/arriba.yml"
+    conda: "../envs/arriba.yml"
     shell:
         "arriba "
         " -x {input.bam}"

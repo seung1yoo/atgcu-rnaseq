@@ -1,65 +1,97 @@
 samples:
-  AortaStudy008_KMS_2989072:
+  EBF_P10_Lot1:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy008_KMS_2989072_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy008_KMS_2989072_R2.fastq.gz
-  AortaStudy019_SHW_6741757:
+    fastq_1: readyfastq/EBF_P10_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P10_Lot1_R2.fastq.gz
+  EBF_P10_Lot2:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy019_SHW_6741757_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy019_SHW_6741757_R2.fastq.gz
-  AortaStudy021_KHI_9006818:
+    fastq_1: readyfastq/EBF_P10_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P10_Lot2_R2.fastq.gz
+  EBF_P10_Lot3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy021_KHI_9006818_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy021_KHI_9006818_R2.fastq.gz
-  AortaStudy027_KHW_6942048:
+    fastq_1: readyfastq/EBF_P10_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P10_Lot3_R2.fastq.gz
+  EBF_P3_Lot1:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy027_KHW_6942048_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy027_KHW_6942048_R2.fastq.gz
-  AortaStudy029_PAR_6993441:
+    fastq_1: readyfastq/EBF_P3_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P3_Lot1_R2.fastq.gz
+  EBF_P3_Lot2:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy029_PAR_6993441_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy029_PAR_6993441_R2.fastq.gz
-  AortaStudy031_JHS_2842771:
+    fastq_1: readyfastq/EBF_P3_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P3_Lot2_R2.fastq.gz
+  EBF_P3_Lot3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy031_JHS_2842771_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy031_JHS_2842771_R2.fastq.gz
-  AortaStudy038_KYS_9008159:
+    fastq_1: readyfastq/EBF_P3_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P3_Lot3_R2.fastq.gz
+  EBF_P4_Lot1:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy038_KYS_9008159_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy038_KYS_9008159_R2.fastq.gz
-  AortaStudy072_KJS_9140144:
+    fastq_1: readyfastq/EBF_P4_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P4_Lot1_R2.fastq.gz
+  EBF_P4_Lot2:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy072_KJS_9140144_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy072_KJS_9140144_R2.fastq.gz
-  AortaStudy109_JKS_9285070:
+    fastq_1: readyfastq/EBF_P4_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P4_Lot2_R2.fastq.gz
+  EBF_P4_Lot3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy109_JKS_9285070_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy109_JKS_9285070_R2.fastq.gz
-  AortaStudy110_LJY_6925206:
+    fastq_1: readyfastq/EBF_P4_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P4_Lot3_R2.fastq.gz
+  EBF_P5_Lot1:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy110_LJY_6925206_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy110_LJY_6925206_R2.fastq.gz
-  AortaStudy112_JWJ_9286913:
+    fastq_1: readyfastq/EBF_P5_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P5_Lot1_R2.fastq.gz
+  EBF_P5_Lot2:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy112_JWJ_9286913_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy112_JWJ_9286913_R2.fastq.gz
-  AortaStudy118_LJS_9282535:
+    fastq_1: readyfastq/EBF_P5_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P5_Lot2_R2.fastq.gz
+  EBF_P5_Lot3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy118_LJS_9282535_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy118_LJS_9282535_R2.fastq.gz
-  AortaStudy125_KWJ_10330327:
+    fastq_1: readyfastq/EBF_P5_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P5_Lot3_R2.fastq.gz
+  EBF_P7_Lot1:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy125_KWJ_10330327_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy125_KWJ_10330327_R2.fastq.gz
-  AortaStudy134_EHD_6370358:
+    fastq_1: readyfastq/EBF_P7_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P7_Lot1_R2.fastq.gz
+  EBF_P7_Lot2:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/AortaStudy134_EHD_6370358_R1.fastq.gz
-    fastq_2: readyfastq/AortaStudy134_EHD_6370358_R2.fastq.gz
-  reference_1:
+    fastq_1: readyfastq/EBF_P7_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P7_Lot2_R2.fastq.gz
+  EBF_P7_Lot3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/reference_1_R1.fastq.gz
-    fastq_2: readyfastq/reference_1_R2.fastq.gz
-  reference_2:
+    fastq_1: readyfastq/EBF_P7_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/EBF_P7_Lot3_R2.fastq.gz
+  YiP3_P15_Lot1:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/reference_2_R1.fastq.gz
-    fastq_2: readyfastq/reference_2_R2.fastq.gz
+    fastq_1: readyfastq/YiP3_P15_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/YiP3_P15_Lot1_R2.fastq.gz
+  YiP3_P15_Lot2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/YiP3_P15_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/YiP3_P15_Lot2_R2.fastq.gz
+  YiP3_P15_Lot3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/YiP3_P15_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/YiP3_P15_Lot3_R2.fastq.gz
+  hMSC_P4_Lot1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/hMSC_P4_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/hMSC_P4_Lot1_R2.fastq.gz
+  hMSC_P4_Lot2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/hMSC_P4_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/hMSC_P4_Lot2_R2.fastq.gz
+  hMSC_P4_Lot3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/hMSC_P4_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/hMSC_P4_Lot3_R2.fastq.gz
+  hMSC_P7_Lot1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/hMSC_P7_Lot1_R1.fastq.gz
+    fastq_2: readyfastq/hMSC_P7_Lot1_R2.fastq.gz
+  hMSC_P7_Lot2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/hMSC_P7_Lot2_R1.fastq.gz
+    fastq_2: readyfastq/hMSC_P7_Lot2_R2.fastq.gz
+  hMSC_P7_Lot3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/hMSC_P7_Lot3_R1.fastq.gz
+    fastq_2: readyfastq/hMSC_P7_Lot3_R2.fastq.gz

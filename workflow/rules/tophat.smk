@@ -24,7 +24,7 @@ if is_exists_tophat_index():
         params:
             extra=""
         threads: 1
-        conda: "envs/tophat.yml"
+        conda: "../envs/tophat.yml"
         shell:
             "bowtie2-build"
             " {params.extra}"
@@ -54,7 +54,7 @@ rule tophat_align:
         outdir="anl/tophat/{sample}",
         libraryType=lambda wildcards: config["samples"][wildcards.sample]["cuff_librarytype"]
     threads: 8
-    conda: "envs/tophat.yml"
+    conda: "../envs/tophat.yml"
     shell:
         "tophat --num-threads {threads}"
         " --output-dir {params.outdir}"

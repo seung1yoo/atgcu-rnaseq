@@ -12,7 +12,7 @@ rule cufflinks:
     benchmark: "benchmarks/cufflinks/{sample}.tsv"
     message: "cufflinks is in progress on {wildcards.sample}"
     threads: 8
-    conda: "envs/cufflinks.yml"
+    conda: "../envs/cufflinks.yml"
     shell:
         "cufflinks -p {threads}"
         " --multi-read-correct"
@@ -54,7 +54,7 @@ rule cuffquant:
         outdir='anl/cuffquant/{sample}',
         libraryType=lambda wildcards: config["samples"][wildcards.sample]["cuff_librarytype"]
     threads: 8
-    conda: "envs/cufflinks.yml"
+    conda: "../envs/cufflinks.yml"
     shell:
         "cuffquant -p {threads}"
         " -o {params.outdir}"
@@ -80,7 +80,7 @@ rule cuffnorm:
         outformat='simple-table',
         labels=",".join(config["sample_names"])
     threads: 8
-    conda: "envs/cufflinks.yml"
+    conda: "../envs/cufflinks.yml"
     shell:
         "cuffnorm -p {threads}"
         " -o {params.outdir}"
@@ -131,7 +131,7 @@ rule cuffdiff:
         dispersion_method='pooled',
         norm_method='geometric'
     threads: 8
-    conda: "envs/cufflinks.yml"
+    conda: "../envs/cufflinks.yml"
     shell:
         "cuffdiff -p {threads}"
         " -o {params.outdir}"
@@ -167,4 +167,5 @@ rule parse_cuffdiff:
         " --tran2desc {config[anno_tran2desc]}"
         " --log2fc-criteria {params.log2fc_criteria}"
         " --p-criteria {params.p_criteria}"
+        " > {log} 2>&1"
 

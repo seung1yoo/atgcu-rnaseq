@@ -103,6 +103,9 @@ class FinalTarget:
     def add_multiqc(self):
         self.files.append(self.anl_path / "multiqc" / "multiqc_report.html")
 
+    def add_report(self):
+        self.files.append(self.anl_path / "report" / "report.html")
+
     def add_parse_fastp(self):
         self.files.append(self.anl_path / "table" / "sequencing_stats.raw.xls")
         self.files.append(self.anl_path / "table" / "sequencing_stats.clean.xls")

@@ -1,14 +1,11 @@
 grch38_ens109:
   genome_fasta: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/H_sapiens_GRCh38_ENS109.genome.fa
   genemodel_gtf: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/H_sapiens_GRCh38_ENS109.geneset.all.gtf
-  star_index: /storage2/User/siyoo/project/GLC23024-RNAS_231123/atgcu-rnaseq/src/star_index
-  hisat2_index: /storage2/User/siyoo/project/GLC23024-RNAS_231123/atgcu-rnaseq/src/hisat2_index
-  tophat_index: /storage2/User/siyoo/project/GLC23024-RNAS_231123/atgcu-rnaseq/src/tophat_index/genome
+  star_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/star_index
+  hisat2_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/hisat2_index
+  tophat_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/tophat_index/genome
   arriba_blacklist: /storage2/User/siyoo/miniconda3/envs/arriba/var/lib/arriba/blacklist_hg38_GRCh38_v2.4.0.tsv.gz
   arriba_known_fusions: /storage2/User/siyoo/miniconda3/envs/arriba/var/lib/arriba/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz
   arriba_protein_domains: /storage2/User/siyoo/miniconda3/envs/arriba/var/lib/arriba/protein_domains_hg38_GRCh38_v2.4.0.gff3
   anno_gene2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/anno.gene2desc.tsv
   anno_tran2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/anno.transcript2desc.tsv
-  #star_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/star_index
-  #hisat2_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/hisat2_index
-  #tophat_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/tophat_index/genome
