@@ -9,3 +9,14 @@ grch38_ens109:
   arriba_protein_domains: /storage2/User/siyoo/miniconda3/envs/arriba/var/lib/arriba/protein_domains_hg38_GRCh38_v2.4.0.gff3
   anno_gene2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/anno.gene2desc.tsv
   anno_tran2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/anno.transcript2desc.tsv
+EquCab3_ens111:
+  genome_fasta: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/data/Equus_caballus.EquCab3.0.dna.toplevel.fa
+  genemodel_gtf: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/data/Equus_caballus.EquCab3.0.111.gtf
+  star_index: src/star_index
+  hisat2_index: src/hisat2_index
+  tophat_index: src/tophat_index/genome
+  anno_gene2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/anno.gene2desc.tsv
+  anno_tran2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/anno.transcript2desc.tsv
+  arriba_blacklist: null
+  arriba_known_fusions: null
+  arriba_protein_domains: null
