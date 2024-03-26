@@ -1,97 +1,129 @@
 samples:
-  EBF_P10_Lot1:
+  No1_LF_220913:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P10_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P10_Lot1_R2.fastq.gz
-  EBF_P10_Lot2:
+    fastq_1: readyfastq/No1_LF_220913_R1.fastq.gz
+    fastq_2: readyfastq/No1_LF_220913_R2.fastq.gz
+  No1_RF_220913:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P10_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P10_Lot2_R2.fastq.gz
-  EBF_P10_Lot3:
+    fastq_1: readyfastq/No1_RF_220913_R1.fastq.gz
+    fastq_2: readyfastq/No1_RF_220913_R2.fastq.gz
+  No2_LF_220914:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P10_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P10_Lot3_R2.fastq.gz
-  EBF_P3_Lot1:
+    fastq_1: readyfastq/No2_LF_220914_R1.fastq.gz
+    fastq_2: readyfastq/No2_LF_220914_R2.fastq.gz
+  No2_RF_220914:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P3_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P3_Lot1_R2.fastq.gz
-  EBF_P3_Lot2:
+    fastq_1: readyfastq/No2_RF_220914_R1.fastq.gz
+    fastq_2: readyfastq/No2_RF_220914_R2.fastq.gz
+  No3_LF_220915:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P3_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P3_Lot2_R2.fastq.gz
-  EBF_P3_Lot3:
+    fastq_1: readyfastq/No3_LF_220915_R1.fastq.gz
+    fastq_2: readyfastq/No3_LF_220915_R2.fastq.gz
+  No3_RF_220915:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P3_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P3_Lot3_R2.fastq.gz
-  EBF_P4_Lot1:
+    fastq_1: readyfastq/No3_RF_220915_R1.fastq.gz
+    fastq_2: readyfastq/No3_RF_220915_R2.fastq.gz
+  No4_LF_9-16:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P4_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P4_Lot1_R2.fastq.gz
-  EBF_P4_Lot2:
+    fastq_1: readyfastq/No4_LF_9-16_R1.fastq.gz
+    fastq_2: readyfastq/No4_LF_9-16_R2.fastq.gz
+  No4_RF_9-16:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P4_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P4_Lot2_R2.fastq.gz
-  EBF_P4_Lot3:
+    fastq_1: readyfastq/No4_RF_9-16_R1.fastq.gz
+    fastq_2: readyfastq/No4_RF_9-16_R2.fastq.gz
+  S221212_LF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P4_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P4_Lot3_R2.fastq.gz
-  EBF_P5_Lot1:
+    fastq_1: readyfastq/S221212_LF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221212_LF_tissue_R2.fastq.gz
+  S221212_RF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P5_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P5_Lot1_R2.fastq.gz
-  EBF_P5_Lot2:
+    fastq_1: readyfastq/S221212_RF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221212_RF_tissue_R2.fastq.gz
+  S221213_LF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P5_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P5_Lot2_R2.fastq.gz
-  EBF_P5_Lot3:
+    fastq_1: readyfastq/S221213_LF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221213_LF_tissue_R2.fastq.gz
+  S221213_RF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P5_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P5_Lot3_R2.fastq.gz
-  EBF_P7_Lot1:
+    fastq_1: readyfastq/S221213_RF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221213_RF_tissue_R2.fastq.gz
+  S221214_LF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P7_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P7_Lot1_R2.fastq.gz
-  EBF_P7_Lot2:
+    fastq_1: readyfastq/S221214_LF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221214_LF_tissue_R2.fastq.gz
+  S221214_RF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P7_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P7_Lot2_R2.fastq.gz
-  EBF_P7_Lot3:
+    fastq_1: readyfastq/S221214_RF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221214_RF_tissue_R2.fastq.gz
+  S221215_LF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/EBF_P7_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/EBF_P7_Lot3_R2.fastq.gz
-  YiP3_P15_Lot1:
+    fastq_1: readyfastq/S221215_LF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221215_LF_tissue_R2.fastq.gz
+  S221215_RF_tissue:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/YiP3_P15_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/YiP3_P15_Lot1_R2.fastq.gz
-  YiP3_P15_Lot2:
+    fastq_1: readyfastq/S221215_RF_tissue_R1.fastq.gz
+    fastq_2: readyfastq/S221215_RF_tissue_R2.fastq.gz
+  S231010_GoodMorning_L-C3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/YiP3_P15_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/YiP3_P15_Lot2_R2.fastq.gz
-  YiP3_P15_Lot3:
+    fastq_1: readyfastq/S231010_GoodMorning_L-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231010_GoodMorning_L-C3_R2.fastq.gz
+  S231010_GoodMorning_L-Cr:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/YiP3_P15_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/YiP3_P15_Lot3_R2.fastq.gz
-  hMSC_P4_Lot1:
+    fastq_1: readyfastq/S231010_GoodMorning_L-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231010_GoodMorning_L-Cr_R2.fastq.gz
+  S231010_GoodMorning_R-C3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/hMSC_P4_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/hMSC_P4_Lot1_R2.fastq.gz
-  hMSC_P4_Lot2:
+    fastq_1: readyfastq/S231010_GoodMorning_R-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231010_GoodMorning_R-C3_R2.fastq.gz
+  S231010_GoodMorning_R-Cr:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/hMSC_P4_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/hMSC_P4_Lot2_R2.fastq.gz
-  hMSC_P4_Lot3:
+    fastq_1: readyfastq/S231010_GoodMorning_R-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231010_GoodMorning_R-Cr_R2.fastq.gz
+  S231011_CheonAiHo_L-C3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/hMSC_P4_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/hMSC_P4_Lot3_R2.fastq.gz
-  hMSC_P7_Lot1:
+    fastq_1: readyfastq/S231011_CheonAiHo_L-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231011_CheonAiHo_L-C3_R2.fastq.gz
+  S231011_CheonAiHo_L-Cr:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/hMSC_P7_Lot1_R1.fastq.gz
-    fastq_2: readyfastq/hMSC_P7_Lot1_R2.fastq.gz
-  hMSC_P7_Lot2:
+    fastq_1: readyfastq/S231011_CheonAiHo_L-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231011_CheonAiHo_L-Cr_R2.fastq.gz
+  S231011_CheonAiHo_R-C3:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/hMSC_P7_Lot2_R1.fastq.gz
-    fastq_2: readyfastq/hMSC_P7_Lot2_R2.fastq.gz
-  hMSC_P7_Lot3:
+    fastq_1: readyfastq/S231011_CheonAiHo_R-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231011_CheonAiHo_R-C3_R2.fastq.gz
+  S231011_CheonAiHo_R-Cr:
     cuff_librarytype: fr-unstranded
-    fastq_1: readyfastq/hMSC_P7_Lot3_R1.fastq.gz
-    fastq_2: readyfastq/hMSC_P7_Lot3_R2.fastq.gz
+    fastq_1: readyfastq/S231011_CheonAiHo_R-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231011_CheonAiHo_R-Cr_R2.fastq.gz
+  S231012_ByeolChorong_L-C3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231012_ByeolChorong_L-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231012_ByeolChorong_L-C3_R2.fastq.gz
+  S231012_ByeolChorong_L-Cr:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231012_ByeolChorong_L-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231012_ByeolChorong_L-Cr_R2.fastq.gz
+  S231012_ByeolChorong_R-C3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231012_ByeolChorong_R-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231012_ByeolChorong_R-C3_R2.fastq.gz
+  S231012_ByeolChorong_R-Cr:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231012_ByeolChorong_R-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231012_ByeolChorong_R-Cr_R2.fastq.gz
+  S231013_Coco_L-C3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231013_Coco_L-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231013_Coco_L-C3_R2.fastq.gz
+  S231013_Coco_L-Cr:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231013_Coco_L-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231013_Coco_L-Cr_R2.fastq.gz
+  S231013_Coco_R-C3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231013_Coco_R-C3_R1.fastq.gz
+    fastq_2: readyfastq/S231013_Coco_R-C3_R2.fastq.gz
+  S231013_Coco_R-Cr:
+    cuff_librarytype: fr-unstranded
+    fastq_1: readyfastq/S231013_Coco_R-Cr_R1.fastq.gz
+    fastq_2: readyfastq/S231013_Coco_R-Cr_R2.fastq.gz
