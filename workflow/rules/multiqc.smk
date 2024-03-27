@@ -17,6 +17,11 @@ rule multiqc:
     shell:
         "multiqc"
         " --outdir anl/multiqc"
+        " --module fastp "
+        " --module tophat "
+        " --module star "
+        " --module hisat2 "
+        " --exclude bowtie2"
         " {input}"
 
 rule report:
