@@ -779,6 +779,10 @@ def main(args):
 
         tophat = Tophat(args.wkdir, args.outprefix, args.target_dir)
 
+    elif args.biotool in ['star']:
+
+        star= STAR(args.wkdir, args.outprefix, args.target_dir)
+
     elif args.biotool in ['cufflinks']:
 
         cufflinks = Cufflinks(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
@@ -852,6 +856,104 @@ def main(args):
         cuffdiff.write_deg_stat_tsv("gene", "genes.stats.xls")
         cuffdiff.write_deg_stat_tsv("isoform", "isoforms.stats.xls")
 
+class STAR:
+    def __init__(self, wkdir, outprefix, target_dir):
+        self.wkdir = Path(wkdir)
+        self.input_read_type = None
+
+        # parse Log.final.out files
+        self.align_summary_path_dic = dict()
+        self.align_summary_info_dic = dict()
+        self.find_align_summary_path(target_dir)
+        self.parse_align_summary_path()
+        self.write_align_summary_tsv(Path(f"{outprefix}.xls"))
+
+    def write_align_summary_tsv(self, file_path):
+        items = ["Samples"]
+        items.append("InputReads")
+        items.append("MappedReads")
+        items.append("MappedReadsUniquely")
+        items.append("MappedReadsMultiple")
+        ofh = file_path.open("w")
+        ofh.write("{0}\n".format("\t".join(items)))
+        for sample_name, _dic in sorted(self.align_summary_info_dic.items()):
+            items = [sample_name]
+            items.append(_dic["input reads"])
+            items.append(_dic["mapped reads"])
+            items.append(_dic["uniquely mapped reads"])
+            items.append(_dic["multiple mapped reads"])
+            ofh.write("{0}\n".format("\t".join([str(x) for x in items])))
+        ofh.close()
+        return 1
+
+
+    def find_align_summary_path(self, _dir):
+        for align_summary_path in Path(_dir).rglob("*/Log.final.out"):
+            sample_name = align_summary_path.parts[-2]
+            logging.info(f"Found {str(align_summary_path)} of {sample_name}")
+            self.align_summary_path_dic.setdefault(sample_name, align_summary_path)
+        return 1
+
+    def parse_align_summary_path(self):
+        for sample_name, align_summary_path in self.align_summary_path_dic.items():
+            _dic = self.star_logFinal_parser(align_summary_path)
+            self.align_summary_info_dic.setdefault(sample_name, _dic)
+
+    def star_logFinal_parser(self, file_path):
+        in_read = 0
+        mapped_reads = 0
+        mapped_reads_uniquely = 0
+        mapped_reads_multiple = 0
+        unmapped_reads = 0
+        for line in file_path.open():
+            if not line.strip():
+                continue
+            items = line.strip().split('\t')
+            if items[0].startswith('Number of input reads'):
+                in_read = int(items[1])*2
+            elif items[0].startswith('Uniquely mapped reads number'):
+                mapped_reads += int(items[1])*2
+                mapped_reads_uniquely = int(items[1])*2
+            elif items[0].startswith('Number of reads mapped to multiple loci'):
+                mapped_reads += int(items[1])*2
+                mapped_reads_multiple += int(items[1])*2
+            elif items[0].startswith('Number of reads mapped to too many loci'):
+                mapped_reads += int(items[1])*2
+                mapped_reads_multiple += int(items[1])*2
+            elif items[0].startswith('Number of reads unmapped: too many mismatches'):
+                unmapped_reads += int(items[1])*2
+            elif items[0].startswith('Number of reads unmapped: too short'):
+                unmapped_reads += int(items[1])*2
+            elif items[0].startswith('Number of reads unmapped: other'):
+                unmapped_reads += int(items[1])*2
+
+        if not mapped_reads in [mapped_reads_uniquely+mapped_reads_multiple]:
+            print('ERROR: check the star_logFinal_parser')
+            print('if not mapped_reads in [mapped_reads_uniquely+mapped_reads_multiple]:')
+            print('in_read', in_read)
+            print('mapped_reads', mapped_reads)
+            print('mapped_reads_uniquely', mapped_reads_uniquely)
+            print('mapped_reads_multiple', mapped_reads_multiple)
+            print('unmapped_reads', unmapped_reads)
+            sys.exit()
+        if not in_read in [mapped_reads+unmapped_reads]:
+            print('ERROR: check the star_logFinal_parser')
+            print('if not in_read in [mapped_reads+unmapped_reads]:')
+            print('in_read', in_read)
+            print('mapped_reads', mapped_reads)
+            print('mapped_reads_uniquely', mapped_reads_uniquely)
+            print('mapped_reads_multiple', mapped_reads_multiple)
+            print('unmapped_reads', unmapped_reads)
+            sys.exit()
+
+        _dic = dict()
+        _dic.setdefault('input reads', in_read)
+        _dic.setdefault('mapped reads', mapped_reads)
+        _dic.setdefault('unmapped reads', unmapped_reads)
+        _dic.setdefault('uniquely mapped reads', mapped_reads_uniquely)
+        _dic.setdefault('multiple mapped reads', mapped_reads_multiple)
+        return _dic
+
 
 
 if __name__=='__main__':
@@ -868,6 +970,10 @@ if __name__=='__main__':
     subparser = subparsers.add_parser("tophat")
     subparser.add_argument("--outprefix", default="MultiParser.Tophat")
     subparser.add_argument("--target-dir", default="anl/tophat")
+
+    subparser = subparsers.add_parser("star")
+    subparser.add_argument("--outprefix", default="MultiParser.STAR")
+    subparser.add_argument("--target-dir", default="anl/star")
 
     subparser = subparsers.add_parser("cufflinks")
     subparser.add_argument("--outprefix", default="MultiParser.Cufflinks")
