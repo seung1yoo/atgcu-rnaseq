@@ -1,8 +1,8 @@
 
 rule cufflinks:
     input:
-        bam=rules.tophat_align.output.bam
-        #bam=rules.star_align.output.aln
+        #bam=rules.tophat_align.output.bam
+        bam=rules.star_align.output.aln
     output:
         fpkmGene="anl/cufflinks/{sample}/genes.fpkm_tracking",
         fpkmTran="anl/cufflinks/{sample}/isoforms.fpkm_tracking"
@@ -45,8 +45,8 @@ rule cufflinks:
 
 rule cuffquant:
     input:
-        bam=rules.tophat_align.output.bam
-        #bam=rules.star_align.output.aln
+        #bam=rules.tophat_align.output.bam
+        bam=rules.star_align.output.aln
     output:
         cxb="anl/cuffquant/{sample}/abundances.cxb"
     log: "logs/cuffquant/{sample}.log"

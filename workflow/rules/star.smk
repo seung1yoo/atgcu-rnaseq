@@ -42,3 +42,20 @@ rule star_align:
         "master/bio/star/align"
 
 
+rule parse_star_align_summary:
+    input:
+        expand("anl/star/{sample}/Log.out", sample=config["sample_names"])
+    output:
+        "anl/table/alignment_stats.star.xls"
+    log: "logs/parse_star_align_summary.log"
+    benchmark: "benchmarks/parse_star_align_summary.tsv"
+    message: "parse_star_align_summary is being run"
+    params:
+        outprefix="anl/table/alignment_stats.star",
+        target_dir="anl/star"
+    shell:
+        "python workflow/scripts/parser.py star"
+        " --outprefix {params.outprefix}"
+        " --target-dir {params.target_dir}"
+        " > {log} 2>&1"
+

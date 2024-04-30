@@ -10,3 +10,5 @@ benchmarks/**
 readyfastq
 eda/
 multiqc/
+MultiParser.STAR.xls
+src

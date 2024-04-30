@@ -113,6 +113,9 @@ class FinalTarget:
     def add_parse_tophat(self):
         self.files.append(self.anl_path / "table" / "alignment_stats.tophat.xls")
 
+    def add_parse_star(self):
+        self.files.append(self.anl_path / "table" / "alignment_stats.star.xls")
+
     def add_parse_cufflinks(self):
         self.files.append(self.anl_path / "table" / "abundance.genes.fpkm.all.xls")
         self.files.append(self.anl_path / "table" / "abundance.genes.fpkm.exp.xls")
