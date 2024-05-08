@@ -100,6 +100,11 @@ class FinalTarget:
             self.files.append(self.anl_path / "cuffdiff" / compare / "gene_exp.diff")
             self.files.append(self.anl_path / "cuffdiff" / compare / "isoform_exp.diff")
 
+    def add_rsem(self):
+        for sample_name in config["sample_names"]:
+            self.files.append(self.anl_path / "rsem" / sample_name / "rsem.genes.results")
+            self.files.append(self.anl_path / "rsem" / sample_name / "rsem.isoforms.results")
+
     def add_multiqc(self):
         self.files.append(self.anl_path / "multiqc" / "multiqc_report.html")
 

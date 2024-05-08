@@ -42,6 +42,8 @@ final_target.add_cuffquant()
 final_target.add_cuffnorm()
 final_target.add_cuffdiff()
 
+final_target.add_rsem()
+
 #-- gene-fusion analysis
 #final_target.add_hisat2_align()
 #final_target.add_arriba()
@@ -63,6 +65,7 @@ include: "rules/star.smk"
 include: "rules/tophat.smk"
 include: "rules/hisat2.smk"
 include: "rules/cufflinks.smk"
+include: "rules/rsem.smk"
 include: "rules/multiqc.smk"
 include: "rules/arriba.smk"
 

@@ -4,6 +4,7 @@ grch38_ens109:
   star_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/star_index
   hisat2_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/hisat2_index
   tophat_index: /storage2/User/siyoo/pipeline/atgcu-rnaseq/src/tophat_index/genome
+  rsem_index: src/rsem_index/reference
   arriba_blacklist: /storage2/User/siyoo/miniconda3/envs/arriba/var/lib/arriba/blacklist_hg38_GRCh38_v2.4.0.tsv.gz
   arriba_known_fusions: /storage2/User/siyoo/miniconda3/envs/arriba/var/lib/arriba/known_fusions_hg38_GRCh38_v2.4.0.tsv.gz
   arriba_protein_domains: /storage2/User/siyoo/miniconda3/envs/arriba/var/lib/arriba/protein_domains_hg38_GRCh38_v2.4.0.gff3
@@ -15,6 +16,7 @@ EquCab3_ens111:
   star_index: src/star_index
   hisat2_index: src/hisat2_index
   tophat_index: src/tophat_index/genome
+  rsem_index: src/rsem_index/reference
   anno_gene2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/anno.gene2desc.tsv
   anno_tran2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/anno.transcript2desc.tsv
   arriba_blacklist: null
