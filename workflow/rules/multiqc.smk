@@ -6,8 +6,7 @@ rule multiqc:
     input:
         expand(["anl/fastp/{sample}/{sample}.fastp.json",
                 "anl/star/{sample}/Log.final.out",
-                "anl/tophat/{sample}/align_summary.txt",
-                "anl/hisat2/{sample}/{sample}.stats"],
+                "anl/tophat/{sample}/align_summary.txt"],
                 sample=config["sample_names"])
     output:
         "anl/multiqc/multiqc_report.html",

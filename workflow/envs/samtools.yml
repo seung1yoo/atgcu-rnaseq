@@ -1,26 +1,30 @@
+name: samtools
 channels:
   - conda-forge
   - bioconda
   - defaults
 dependencies:
-  - _libgcc_mutex=0.1=main
-  - _openmp_mutex=5.1=1_gnu
-  - bzip2=1.0.8=h7b6447c_0
-  - c-ares=1.19.0=h5eee18b_0
-  - ca-certificates=2023.05.30=h06a4308_0
-  - curl=7.62.0=hbc83047_0
-  - htslib=1.9=h4da6232_3
-  - libcurl=7.62.0=h20c2e04_0
-  - libdeflate=1.2=h516909a_1
-  - libev=4.33=h7f8727e_1
-  - libgcc=7.2.0=h69d50b8_2
-  - libgcc-ng=11.2.0=h1234567_1
-  - libgomp=11.2.0=h1234567_1
-  - libnghttp2=1.52.0=ha637b67_1
-  - libssh2=1.10.0=h37d81fd_2
-  - libstdcxx-ng=11.2.0=h1234567_1
-  - ncurses=6.1=he6710b0_1
-  - openssl=1.1.1u=h7f8727e_0
-  - samtools=1.9=h10a08f8_12
-  - xz=5.2.10=h5eee18b_1
-  - zlib=1.2.13=h5eee18b_0
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=2_gnu
+  - bzip2=1.0.8=hd590300_5
+  - c-ares=1.28.1=hd590300_0
+  - ca-certificates=2024.2.2=hbcca054_0
+  - htslib=1.20=h81da01d_0
+  - keyutils=1.6.1=h166bdaf_0
+  - krb5=1.21.2=h659d440_0
+  - libcurl=8.7.1=hca28451_0
+  - libdeflate=1.20=hd590300_0
+  - libedit=3.1.20191231=he28a2e2_2
+  - libev=4.33=hd590300_2
+  - libgcc-ng=13.2.0=h77fa898_7
+  - libgomp=13.2.0=h77fa898_7
+  - libnghttp2=1.58.0=h47da74e_1
+  - libssh2=1.11.0=h0841786_0
+  - libstdcxx-ng=13.2.0=hc0a3c3a_7
+  - libzlib=1.2.13=hd590300_5
+  - ncurses=6.5=h59595ed_0
+  - openssl=3.3.0=hd590300_0
+  - samtools=1.20=h50ea8bc_0
+  - xz=5.2.6=h166bdaf_0
+  - zstd=1.5.6=ha6fb4c9_0
+prefix: /storage2/User/siyoo/miniconda3/envs/samtools

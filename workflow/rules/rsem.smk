@@ -27,7 +27,9 @@ if is_exists_rsem_index():
 
 rule rsem_calculate_expression:
     input:
-        bam=rules.star_align.output.aln,
+        bam=rules.star_align.output.tranBam,
+        #fq_one="anl/fastp/{sample}/{sample}_R1.fastq.gz",
+        #fq_two="anl/fastp/{sample}/{sample}_R2.fastq.gz",
         reference=multiext("src/rsem_index/reference",
                 ".seq", 
                 ".grp", 

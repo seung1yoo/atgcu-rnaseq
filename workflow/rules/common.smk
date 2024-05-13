@@ -69,6 +69,8 @@ class FinalTarget:
     def add_star_align(self):
         for sample_name in config["sample_names"]:
             self.files.append(self.anl_path / "star" / sample_name / "Aligned.sortedByCoord.out.bam")
+            self.files.append(self.anl_path / "star" / sample_name / "Aligned.sortedByCoord.out.bam.bai")
+            self.files.append(self.anl_path / "star" / sample_name / "Aligned.toTranscriptome.out.bam")
             self.files.append(self.anl_path / "star" / sample_name / "Log.final.out")
             self.files.append(self.anl_path / "star" / sample_name / "ReadsPerGene.out.tab")
 
