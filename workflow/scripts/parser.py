@@ -762,100 +762,6 @@ class Cuffdiff:
         return 1
 
 
-
-
-
-
-def main(args):
-    logging.info(args)
-
-    if args.biotool in ['fastp']:
-
-        fastp = Fastp(args.wkdir, args.outprefix)
-        fastp.find_json_path(args.target_dir)
-        fastp.write_summary_tsv(args.target_tag)
-
-    elif args.biotool in ['tophat']:
-
-        tophat = Tophat(args.wkdir, args.outprefix, args.target_dir)
-
-    elif args.biotool in ['star']:
-
-        star= STAR(args.wkdir, args.outprefix, args.target_dir)
-
-    elif args.biotool in ['cufflinks']:
-
-        cufflinks = Cufflinks(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
-
-        cufflinks.find_fpkm_tracking_path("genes", "anl/cufflinks")
-        if cufflinks.gene2desc_fp.is_file():
-            cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "BIOTYPE", "biotype")
-            cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "SYMBOL", "symbol")
-            cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "DESCRIPTION", "description")
-        cufflinks.parse_fpkm_tracking_path("genes")
-        cufflinks.write_fpkm_tsv("genes", 0.0, cufflinks.wkdir / f"{args.outprefix}.genes.fpkm.all.xls")
-        cufflinks.write_fpkm_tsv("genes", 0.3, cufflinks.wkdir / f"{args.outprefix}.genes.fpkm.exp.xls")
-        cufflinks.write_stat_exp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stats.exp.xls")
-        cufflinks.write_stat_coexp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stats.coexp.xls")
-
-        cufflinks.find_fpkm_tracking_path("isoforms", "anl/cufflinks")
-        if cufflinks.tran2desc_fp.is_file():
-            cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "BIOTYPE", "biotype")
-            cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "SYMBOL", "symbol")
-            cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "DESCRIPTION", "description")
-        cufflinks.parse_fpkm_tracking_path("isoforms")
-        cufflinks.write_fpkm_tsv("isoforms", 0.0, cufflinks.wkdir / f"{args.outprefix}.isoforms.fpkm.all.xls")
-        cufflinks.write_fpkm_tsv("isoforms", 0.3, cufflinks.wkdir / f"{args.outprefix}.isoforms.fpkm.exp.xls")
-        cufflinks.write_stat_exp("isoforms", cufflinks.wkdir / f"{args.outprefix}.isoforms.stats.exp.xls")
-        cufflinks.write_stat_coexp("isoforms", cufflinks.wkdir / f"{args.outprefix}.isoforms.stats.coexp.xls")
-
-
-    elif args.biotool in ['cuffnorm']:
-
-        cuffnorm = Cuffnorm(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
-
-        cuffnorm.find_fpkm_table_path("genes", "anl/cuffnorm")
-        if cuffnorm.gene2desc_fp.is_file():
-            cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "BIOTYPE", "biotype")
-            cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "SYMBOL", "symbol")
-            cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "DESCRIPTION", "description")
-        cuffnorm.parse_fpkm_table_path("genes")
-        cuffnorm.write_fpkm_tsv("genes", 0.0, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.all.xls")
-        cuffnorm.write_fpkm_tsv("genes", 0.3, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.exp.xls")
-        cuffnorm.write_stat_exp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.exp.xls")
-        cuffnorm.write_stat_coexp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.coexp.xls")
-
-        cuffnorm.find_fpkm_table_path("isoforms", "anl/cuffnorm")
-        if cuffnorm.tran2desc_fp.is_file():
-            cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "BIOTYPE", "biotype")
-            cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "SYMBOL", "symbol")
-            cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "DESCRIPTION", "description")
-        cuffnorm.parse_fpkm_table_path("isoforms")
-        cuffnorm.write_fpkm_tsv("isoforms", 0.0, cuffnorm.wkdir / f"{args.outprefix}.isoforms.fpkm.all.xls")
-        cuffnorm.write_fpkm_tsv("isoforms", 0.3, cuffnorm.wkdir / f"{args.outprefix}.isoforms.fpkm.exp.xls")
-        cuffnorm.write_stat_exp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.isoforms.stats.exp.xls")
-        cuffnorm.write_stat_coexp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.isoforms.stats.coexp.xls")
-
-
-    elif args.biotool in ['cuffdiff']:
-
-        cuffdiff = Cuffdiff(args.wkdir, args.outprefix, args.log2fc_criteria, args.p_criteria)
-
-        if Path(args.gene2desc).is_file():
-            cuffdiff.anno_xxxx2desc("gene", Path(args.gene2desc), "SYMBOL", "GeneSymbol")
-            cuffdiff.anno_xxxx2desc("gene", Path(args.gene2desc), "DESCRIPTION", "Description")
-            cuffdiff.anno_xxxx2desc("gene", Path(args.gene2desc), "BIOTYPE", "Biotype")
-
-        if Path(args.tran2desc).is_file():
-            cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "SYMBOL", "TranscriptSymbol")
-            cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "DESCRIPTION", "Description")
-            cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "BIOTYPE", "Biotype")
-
-        cuffdiff.write_deg_tsv("gene", "genes.xls")
-        cuffdiff.write_deg_tsv("isoform", "isoforms.xls")
-        cuffdiff.write_deg_stat_tsv("gene", "genes.stats.xls")
-        cuffdiff.write_deg_stat_tsv("isoform", "isoforms.stats.xls")
-
 class STAR:
     def __init__(self, wkdir, outprefix, target_dir):
         self.wkdir = Path(wkdir)
@@ -955,6 +861,293 @@ class STAR:
         return _dic
 
 
+class Rsem:
+    def __init__(self, wkdir, outprefix, gene2desc, tran2desc, sample_id_s):
+        self.rsem_dic = dict()
+        self.gene_info_dic = dict()
+        self.tran_info_dic = dict()
+
+        self.wkdir = Path(wkdir)
+        self.outprefix = outprefix
+        self.sample_id_s = sample_id_s
+
+        self.gene2desc_fp = Path(gene2desc)
+        self.tran2desc_fp = Path(tran2desc)
+
+    def anno_xxxx2desc(self, molecule_type, xxxx2desc_fp, colname, key):
+        if molecule_type in ["genes"]:
+            _info_dic = self.gene_info_dic
+        elif molecule_type in ["isoforms"]:
+            _info_dic = self.tran_info_dic
+
+        for line in xxxx2desc_fp.open():
+            items = line.rstrip('\n').split('\t')
+            if items[0] in ["ID"]:
+                idx_dic = dict()
+                for idx, item in enumerate(items):
+                    idx_dic.setdefault(item, idx)
+                continue
+            _id = items[idx_dic["ID"]]
+            _info_dic.setdefault(_id, {}).setdefault(key, items[idx_dic[colname]])
+
+        if molecule_type in ["genes"]:
+            self.gene_info_dic = _info_dic
+        elif molecule_type in ["isoforms"]:
+            self.tran_info_dic = _info_dic
+        return 1
+
+    def dic_to_stat(self, molecule_type):
+        if molecule_type in ["genes"]:
+            _info_dic = self.gene_info_dic
+        elif molecule_type in ["isoforms"]:
+            _info_dic = self.tran_info_dic
+
+        _stat_col_s = ["fpkm>=0.3", "fpkm>=1", "fpkm>=10", "fpkm>=100", "fpkm>=1000"]
+
+        stat_dic = dict()
+        for sample_id in self.sample_id_s:
+            for _stat_col in _stat_col_s:
+                stat_dic.setdefault(sample_id, {}).setdefault(_stat_col, [])
+
+        for _id, a_dic in self.rsem_dic.items():
+            biotype = _info_dic[_id]['biotype']
+            if biotype not in ['protein_coding']:
+                continue
+            for sample_id in self.sample_id_s:
+                fpkm = float(a_dic[sample_id]['fpkm'])
+                if fpkm >= 1000:
+                    stat_dic[sample_id]["fpkm>=1000"].append(_id)
+                if fpkm >= 100:
+                    stat_dic[sample_id]["fpkm>=100"].append(_id)
+                if fpkm >= 10:
+                    stat_dic[sample_id]["fpkm>=10"].append(_id)
+                if fpkm >= 1:
+                    stat_dic[sample_id]["fpkm>=1"].append(_id)
+                if fpkm >= 0.3:
+                    stat_dic[sample_id]["fpkm>=0.3"].append(_id)
+
+        outfn = f"{self.outprefix}.{molecule_type}.stats.exp.xls"
+        outfh = Path(outfn).open("w")
+        headers = ["SampleNames"]
+        headers.extend(_stat_col_s)
+        outfh.write("{0}\n".format("\t".join(headers)))
+        for sample_id in self.sample_id_s:
+            items = [sample_id]
+            for _stat_col in _stat_col_s:
+                items.append(len(stat_dic[sample_id][_stat_col]))
+            outfh.write("{0}\n".format("\t".join([str(x) for x in items])))
+        outfh.close()
+
+    def dic_to_table(self, _type, data, threshold=0.0):
+        outfn = f"{self.outprefix}.{_type}.{data}.xls"
+        outfh = Path(outfn).open("w")
+
+        cols = ['ID']
+        cols.extend(self.sample_id_s)
+        cols.extend(["GeneSymbol","Description","Biotype"])
+        outfh.write("{0}\n".format('\t'.join(cols)))
+
+        for _id, s_dic in sorted(self.rsem_dic.items()):
+            items = [_id]
+            values = []
+            for s_id in self.sample_id_s:
+                if data in ["fpkm.all", "fpkm.exp"]:
+                    value = s_dic[s_id]["fpkm"]
+                else:
+                    value = s_dic[s_id][data]
+                items.append(value)
+                values.append(value)
+
+            if _type in ["genes"] and _id in self.gene_info_dic:
+                items.append(self.gene_info_dic[_id]['symbol'])
+                items.append(self.gene_info_dic[_id]['description'])
+                items.append(self.gene_info_dic[_id]['biotype'])
+            elif _type in ["isoforms"] and _id in self.tran_info_dic:
+                items.append(self.tran_info_dic[_id]['symbol'])
+                items.append(self.tran_info_dic[_id]['description'])
+                items.append(self.tran_info_dic[_id]['biotype'])
+            else:
+                items.append("-")
+                items.append("-")
+                items.append("-")
+
+            is_write = 1
+            values = [float(x) for x in values]
+            if max(values) < threshold:
+                is_write = 0
+
+            if is_write:
+                outfh.write('{0}\n'.format('\t'.join(items)))
+
+        outfh.close()
+
+    def from_fn_to_dic(self, _type):
+        for sample_id in self.sample_id_s:
+            _fp = self.wkdir / "anl" / "rsem" / sample_id / "rsem.{0}.results".format(_type)
+            if _type in ['genes']:
+                self.parse_gene_fn(sample_id, _fp)
+            elif _type in ['isoforms']:
+                self.parse_isoforms_fn(sample_id, _fp)
+
+    def parse_gene_fn(self, sid, gene_fp):
+        for line in gene_fp.open():
+            items = line.rstrip('\n').split('\t')
+            if items[0] in ['gene_id']:
+                idx_dic = dict()
+                for idx, item in enumerate(items):
+                    idx_dic.setdefault(item, idx)
+                continue
+            _id = items[idx_dic['gene_id']]
+            length = str(int(round(float(items[idx_dic['length']]),0)))
+            readcount = str(int(round(float(items[idx_dic['expected_count']]),0)))
+            tpm = items[idx_dic['TPM']]
+            fpkm = items[idx_dic['FPKM']]
+
+            self.rsem_dic.setdefault(_id,{}).setdefault(sid,{})
+            self.rsem_dic[_id][sid].setdefault('length', length)
+            self.rsem_dic[_id][sid].setdefault('readcount', readcount)
+            self.rsem_dic[_id][sid].setdefault('tpm', tpm)
+            self.rsem_dic[_id][sid].setdefault('fpkm', fpkm)
+
+    def parse_isoforms_fn(self, sid, isoform_fp):
+        for line in isoform_fp.open():
+            items = line.rstrip('\n').split('\t')
+            if items[0] in ['transcript_id']:
+                idx_dic = dict()
+                for idx, item in enumerate(items):
+                    idx_dic.setdefault(item, idx)
+                continue
+            _id = items[idx_dic['transcript_id']]
+            length = str(int(round(float(items[idx_dic['length']]),0)))
+            readcount = str(int(round(float(items[idx_dic['expected_count']]),0)))
+            tpm = items[idx_dic['TPM']]
+            fpkm = items[idx_dic['FPKM']]
+
+            self.rsem_dic.setdefault(_id,{}).setdefault(sid,{})
+            self.rsem_dic[_id][sid].setdefault('length', length)
+            self.rsem_dic[_id][sid].setdefault('readcount', readcount)
+            self.rsem_dic[_id][sid].setdefault('tpm', tpm)
+            self.rsem_dic[_id][sid].setdefault('fpkm', fpkm)
+
+
+
+
+def main(args):
+    logging.info(args)
+
+    if args.biotool in ['fastp']:
+
+        fastp = Fastp(args.wkdir, args.outprefix)
+        fastp.find_json_path(args.target_dir)
+        fastp.write_summary_tsv(args.target_tag)
+
+    elif args.biotool in ['tophat']:
+
+        tophat = Tophat(args.wkdir, args.outprefix, args.target_dir)
+
+    elif args.biotool in ['star']:
+
+        star= STAR(args.wkdir, args.outprefix, args.target_dir)
+
+    elif args.biotool in ['cufflinks']:
+
+        cufflinks = Cufflinks(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
+
+        cufflinks.find_fpkm_tracking_path("genes", "anl/cufflinks")
+        if cufflinks.gene2desc_fp.is_file():
+            cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "BIOTYPE", "biotype")
+            cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "SYMBOL", "symbol")
+            cufflinks.anno_xxxx2desc("genes", cufflinks.gene2desc_fp, "DESCRIPTION", "description")
+        cufflinks.parse_fpkm_tracking_path("genes")
+        cufflinks.write_fpkm_tsv("genes", 0.0, cufflinks.wkdir / f"{args.outprefix}.genes.fpkm.all.xls")
+        cufflinks.write_fpkm_tsv("genes", 0.3, cufflinks.wkdir / f"{args.outprefix}.genes.fpkm.exp.xls")
+        cufflinks.write_stat_exp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stats.exp.xls")
+        cufflinks.write_stat_coexp("genes", cufflinks.wkdir / f"{args.outprefix}.genes.stats.coexp.xls")
+
+        cufflinks.find_fpkm_tracking_path("isoforms", "anl/cufflinks")
+        if cufflinks.tran2desc_fp.is_file():
+            cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "BIOTYPE", "biotype")
+            cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "SYMBOL", "symbol")
+            cufflinks.anno_xxxx2desc("isoforms", cufflinks.tran2desc_fp, "DESCRIPTION", "description")
+        cufflinks.parse_fpkm_tracking_path("isoforms")
+        cufflinks.write_fpkm_tsv("isoforms", 0.0, cufflinks.wkdir / f"{args.outprefix}.isoforms.fpkm.all.xls")
+        cufflinks.write_fpkm_tsv("isoforms", 0.3, cufflinks.wkdir / f"{args.outprefix}.isoforms.fpkm.exp.xls")
+        cufflinks.write_stat_exp("isoforms", cufflinks.wkdir / f"{args.outprefix}.isoforms.stats.exp.xls")
+        cufflinks.write_stat_coexp("isoforms", cufflinks.wkdir / f"{args.outprefix}.isoforms.stats.coexp.xls")
+
+
+    elif args.biotool in ['cuffnorm']:
+
+        cuffnorm = Cuffnorm(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
+
+        cuffnorm.find_fpkm_table_path("genes", "anl/cuffnorm")
+        if cuffnorm.gene2desc_fp.is_file():
+            cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "BIOTYPE", "biotype")
+            cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "SYMBOL", "symbol")
+            cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "DESCRIPTION", "description")
+        cuffnorm.parse_fpkm_table_path("genes")
+        cuffnorm.write_fpkm_tsv("genes", 0.0, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.all.xls")
+        cuffnorm.write_fpkm_tsv("genes", 0.3, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.exp.xls")
+        cuffnorm.write_stat_exp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.exp.xls")
+        cuffnorm.write_stat_coexp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.coexp.xls")
+
+        cuffnorm.find_fpkm_table_path("isoforms", "anl/cuffnorm")
+        if cuffnorm.tran2desc_fp.is_file():
+            cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "BIOTYPE", "biotype")
+            cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "SYMBOL", "symbol")
+            cuffnorm.anno_xxxx2desc("isoforms", cuffnorm.tran2desc_fp, "DESCRIPTION", "description")
+        cuffnorm.parse_fpkm_table_path("isoforms")
+        cuffnorm.write_fpkm_tsv("isoforms", 0.0, cuffnorm.wkdir / f"{args.outprefix}.isoforms.fpkm.all.xls")
+        cuffnorm.write_fpkm_tsv("isoforms", 0.3, cuffnorm.wkdir / f"{args.outprefix}.isoforms.fpkm.exp.xls")
+        cuffnorm.write_stat_exp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.isoforms.stats.exp.xls")
+        cuffnorm.write_stat_coexp("isoforms", cuffnorm.wkdir / f"{args.outprefix}.isoforms.stats.coexp.xls")
+
+    elif args.biotool in ['rsem']:
+        rsem = Rsem(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc, args.sample_id_s)
+        if rsem.gene2desc_fp.is_file():
+            rsem.anno_xxxx2desc("genes", rsem.gene2desc_fp, "BIOTYPE", "biotype")
+            rsem.anno_xxxx2desc("genes", rsem.gene2desc_fp, "SYMBOL", "symbol")
+            rsem.anno_xxxx2desc("genes", rsem.gene2desc_fp, "DESCRIPTION", "description")
+        if rsem.tran2desc_fp.is_file():
+            rsem.anno_xxxx2desc("isoforms", rsem.tran2desc_fp, "BIOTYPE", "biotype")
+            rsem.anno_xxxx2desc("isoforms", rsem.tran2desc_fp, "SYMBOL", "symbol")
+            rsem.anno_xxxx2desc("isoforms", rsem.tran2desc_fp, "DESCRIPTION", "description")
+        rsem.rsem_dic = dict()
+        rsem.from_fn_to_dic('genes')
+        rsem.dic_to_table('genes', 'length')
+        rsem.dic_to_table('genes', 'readcount')
+        rsem.dic_to_table('genes', 'tpm')
+        rsem.dic_to_table('genes', 'fpkm.all')
+        rsem.dic_to_table('genes', 'fpkm.exp', 0.3)
+        rsem.dic_to_stat('genes')
+        rsem.rsem_dic = dict()
+        rsem.from_fn_to_dic('isoforms')
+        rsem.dic_to_table('isoforms', 'length')
+        rsem.dic_to_table('isoforms', 'readcount')
+        rsem.dic_to_table('isoforms', 'tpm')
+        rsem.dic_to_table('isoforms', 'fpkm.all')
+        rsem.dic_to_table('isoforms', 'fpkm.exp', 0.3)
+        rsem.dic_to_stat('isoforms')
+
+    elif args.biotool in ['cuffdiff']:
+
+        cuffdiff = Cuffdiff(args.wkdir, args.outprefix, args.log2fc_criteria, args.p_criteria)
+
+        if Path(args.gene2desc).is_file():
+            cuffdiff.anno_xxxx2desc("gene", Path(args.gene2desc), "SYMBOL", "GeneSymbol")
+            cuffdiff.anno_xxxx2desc("gene", Path(args.gene2desc), "DESCRIPTION", "Description")
+            cuffdiff.anno_xxxx2desc("gene", Path(args.gene2desc), "BIOTYPE", "Biotype")
+
+        if Path(args.tran2desc).is_file():
+            cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "SYMBOL", "TranscriptSymbol")
+            cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "DESCRIPTION", "Description")
+            cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "BIOTYPE", "Biotype")
+
+        cuffdiff.write_deg_tsv("gene", "genes.xls")
+        cuffdiff.write_deg_tsv("isoform", "isoforms.xls")
+        cuffdiff.write_deg_stat_tsv("gene", "genes.stats.xls")
+        cuffdiff.write_deg_stat_tsv("isoform", "isoforms.stats.xls")
+
 
 if __name__=='__main__':
     import argparse
@@ -984,6 +1177,12 @@ if __name__=='__main__':
     subparser.add_argument("--outprefix", default="MultiParser.Cuffnorm")
     subparser.add_argument("--gene2desc", default="anno.gene2desc.tsv")
     subparser.add_argument("--tran2desc", default="anno.transcript2desc.tsv")
+
+    subparser = subparsers.add_parser("rsem")
+    subparser.add_argument("--outprefix", default="MultiParser.Rsem")
+    subparser.add_argument("--gene2desc", default="anno.gene2desc.tsv")
+    subparser.add_argument("--tran2desc", default="anno.transcript2desc.tsv")
+    subparser.add_argument("--sample-id-s", nargs="+", default=[])
 
     subparser = subparsers.add_parser("cuffdiff")
     subparser.add_argument("--outprefix", default="MultiParser.Cuffdiff")

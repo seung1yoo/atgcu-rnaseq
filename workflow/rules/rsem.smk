@@ -50,3 +50,35 @@ rule rsem_calculate_expression:
     wrapper:
         "v3.10.2/bio/rsem/calculate-expression"
 
+rule parse_rsem:
+    input:
+        gene=expand("anl/rsem/{sample}/rsem.genes.results", sample=config['sample_names']),
+        tran=expand("anl/rsem/{sample}/rsem.isoforms.results", sample=config['sample_names']),
+    output:
+        gene_fpkm="anl/table/abundance.rsem.genes.fpkm.all.xls",
+        gene_fpkm_exp="anl/table/abundance.rsem.genes.fpkm.exp.xls",
+        gene_tpm="anl/table/abundance.rsem.genes.tpm.xls",
+        gene_count="anl/table/abundance.rsem.genes.readcount.xls",
+        gene_length="anl/table/abundance.rsem.genes.length.xls",
+        gene_stat_exp="anl/table/abundance.rsem.genes.stats.exp.xls",
+        
+        tran_fpkm="anl/table/abundance.rsem.isoforms.fpkm.all.xls",
+        tran_fpkm_exp="anl/table/abundance.rsem.isoforms.fpkm.exp.xls",
+        tran_tpm="anl/table/abundance.rsem.isoforms.tpm.xls",
+        tran_count="anl/table/abundance.rsem.isoforms.readcount.xls",
+        tran_length="anl/table/abundance.rsem.isoforms.length.xls",
+        tran_stat_exp="anl/table/abundance.rsem.isoforms.stats.exp.xls",
+
+    log: "logs/parse_rsem.log"
+    benchmark: "benchmarks/parse_rsem.tsv"
+    message: "parse_rsem is being run"
+    params:
+        samples=expand("{sample}", sample=config['sample_names'])
+    shell:
+        "python workflow/scripts/parser.py rsem"
+        " --outprefix anl/table/abundance.rsem"
+        " --gene2desc {config[anno_gene2desc]}"
+        " --tran2desc {config[anno_tran2desc]}"
+        " --sample-id-s {params.samples}"
+        " > {log} 2>&1"
+

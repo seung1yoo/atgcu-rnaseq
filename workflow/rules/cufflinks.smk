@@ -1,8 +1,8 @@
 
 rule cufflinks:
     input:
-        #bam=rules.tophat_align.output.bam
-        bam=rules.star_align.output.sortBam
+        bam=rules.tophat_align.output.bam
+        #bam=rules.star_align.output.sortBam
     output:
         fpkmGene="anl/cufflinks/{sample}/genes.fpkm_tracking",
         fpkmTran="anl/cufflinks/{sample}/isoforms.fpkm_tracking"
@@ -24,24 +24,24 @@ rule cufflinks:
         " {input.bam}"
         " > {log} 2>&1"
 
-#rule parse_cufflinks:
-#    input:
-#        expand("anl/cufflinks/{sample}/genes.fpkm_tracking", sample=config["sample_names"])
-#    output:
-#        "anl/table/abundance.genes.fpkm.all.xls",
-#        "anl/table/abundance.genes.fpkm.exp.xls",
-#        "anl/table/abundance.genes.stats.exp.xls",
-#        "anl/table/abundance.genes.stats.coexp.xls",
-#        "anl/table/abundance.isoforms.fpkm.all.xls",
-#        "anl/table/abundance.isoforms.fpkm.exp.xls",
-#        "anl/table/abundance.isoforms.stats.exp.xls",
-#        "anl/table/abundance.isoforms.stats.coexp.xls"
-#    log: "logs/parse_cuffnorm.log"
-#    shell:
-#        "python workflow/scripts/parser.py cufflinks"
-#        " --outprefix anl/table/abundance"
-#        " --gene2desc {config[anno_gene2desc]}"
-#        " --tran2desc {config[anno_tran2desc]}"
+rule parse_cufflinks:
+    input:
+        expand("anl/cufflinks/{sample}/genes.fpkm_tracking", sample=config["sample_names"])
+    output:
+        "anl/table/abundance.cufflinks.genes.fpkm.all.xls",
+        "anl/table/abundance.cufflinks.genes.fpkm.exp.xls",
+        "anl/table/abundance.cufflinks.genes.stats.exp.xls",
+        "anl/table/abundance.cufflinks.genes.stats.coexp.xls",
+        "anl/table/abundance.cufflinks.isoforms.fpkm.all.xls",
+        "anl/table/abundance.cufflinks.isoforms.fpkm.exp.xls",
+        "anl/table/abundance.cufflinks.isoforms.stats.exp.xls",
+        "anl/table/abundance.cufflinks.isoforms.stats.coexp.xls"
+    log: "logs/parse_cufflinks.log"
+    shell:
+        "python workflow/scripts/parser.py cufflinks"
+        " --outprefix anl/table/abundance.cufflinks"
+        " --gene2desc {config[anno_gene2desc]}"
+        " --tran2desc {config[anno_tran2desc]}"
 
 rule cuffquant:
     input:
@@ -98,20 +98,20 @@ rule parse_cuffnorm:
         "anl/cuffnorm/genes.fpkm_table",
         "anl/cuffnorm/isoforms.fpkm_table"
     output:
-        "anl/table/abundance.genes.fpkm.all.xls",
-        "anl/table/abundance.genes.fpkm.exp.xls",
-        "anl/table/abundance.genes.stats.exp.xls",
-        "anl/table/abundance.genes.stats.coexp.xls",
-        "anl/table/abundance.isoforms.fpkm.all.xls",
-        "anl/table/abundance.isoforms.fpkm.exp.xls",
-        "anl/table/abundance.isoforms.stats.exp.xls",
-        "anl/table/abundance.isoforms.stats.coexp.xls"
+        "anl/table/abundance.cuffnorm.genes.fpkm.all.xls",
+        "anl/table/abundance.cuffnorm.genes.fpkm.exp.xls",
+        "anl/table/abundance.cuffnorm.genes.stats.exp.xls",
+        "anl/table/abundance.cuffnorm.genes.stats.coexp.xls",
+        "anl/table/abundance.cuffnorm.isoforms.fpkm.all.xls",
+        "anl/table/abundance.cuffnorm.isoforms.fpkm.exp.xls",
+        "anl/table/abundance.cuffnorm.isoforms.stats.exp.xls",
+        "anl/table/abundance.cuffnorm.isoforms.stats.coexp.xls"
     log: "logs/parse_cuffnorm.log"
     benchmark: "benchmarks/parse_cuffnorm.tsv"
     message: "parse_cuffnorm is being run"
     shell:
         "python workflow/scripts/parser.py cuffnorm"
-        " --outprefix anl/table/abundance"
+        " --outprefix anl/table/abundance.cuffnorm"
         " --gene2desc {config[anno_gene2desc]}"
         " --tran2desc {config[anno_tran2desc]}"
         " > {log} 2>&1"
