@@ -64,7 +64,7 @@ class GTF:
             attr_s = [x.strip() for x in items[8].split(';') if x]
             for attr in attr_s:
                 key = attr.split()[0]
-                value_s = re.findall('\s\"(.*?)\"', attr)
+                value_s = re.findall(r'\s\"(.*?)\"', attr)
                 if value_s:
                     value = value_s[0]
                 else:
@@ -248,11 +248,11 @@ class GetDesc(GTF):
         for record in SeqIO.parse(open(self.fasta), 'fasta'):
             transcript = record.id
             _desc = record.description
-            chromosome = self.find_pattern('\schromosome\:(.*?)\sgene\:', _desc)
-            gene = self.find_pattern('\sgene\:(.*?)\sgene_biotype:', _desc)
-            biotype = self.find_pattern('\sgene_biotype\:(.*?)\stranscript_biotype:', _desc)
-            symbol = self.find_pattern('\sgene_symbol\:(.*?)\sdescription:', _desc)
-            description = self.find_pattern('\sdescription\:(.*?)$', _desc)
+            chromosome = self.find_pattern(r'\schromosome\:(.*?)\sgene\:', _desc)
+            gene = self.find_pattern(r'\sgene\:(.*?)\sgene_biotype:', _desc)
+            biotype = self.find_pattern(r'\sgene_biotype\:(.*?)\stranscript_biotype:', _desc)
+            symbol = self.find_pattern(r'\sgene_symbol\:(.*?)\sdescription:', _desc)
+            description = self.find_pattern(r'\sdescription\:(.*?)$', _desc)
 
             if gene in self.id_version_dic:
                 gene = self.id_version_dic[gene]
@@ -1449,11 +1449,11 @@ def main(args):
 
     elif args.biotool in ['get_anno_uniprot']:
         get_anno_uniprot = GetAnnoUniprot(args.wkdir, args.gtf, args.tsv, args.dat)
-    elif args.biotool in ['get_anno_uniprot']:
+    elif args.biotool in ['get_mapg2t_gtf']:
         get_mapg2t_gtf = GetMapG2TGTF(args.wkdir, args.gtf)
-    elif args.biotool in ['get_anno_uniprot']:
+    elif args.biotool in ['get_desc']:
         get_desc = GetDesc(args.wkdir, args.gtf, args.mysqlgene, args.mysqltran)
-    elif args.biotool in ['get_anno_uniprot']:
+    elif args.biotool in ['cleanup_fasta']:
         cleanup_fasta = CleanupFasta(args.wkdir, args.target, args.gtf, args.infasta, args.outfasta)
 
 

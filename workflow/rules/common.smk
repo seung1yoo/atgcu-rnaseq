@@ -67,6 +67,16 @@ class FinalTarget:
         self.files.append(config["anno_tran2ipr"])
         self.files.append(config["anno_tran2pfam"])
 
+    def get_mapg2t_gtf(self):
+        self.files.append(config["map_gene2tran"])
+
+    def get_desc(self):
+        self.files.append(config["anno_gene2desc"])
+        self.files.append(config["anno_tran2desc"])
+
+
+    
+
     def add_fastp_pe(self):
         for sample_name in config["sample_names"]:
             self.files.append(self.anl_path / "fastp" / sample_name / f"{sample_name}_R1.fastq.gz")

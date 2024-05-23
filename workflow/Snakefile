@@ -31,32 +31,34 @@ final_target = FinalTarget("anl", "src")
 
 #-- building genomic resources
 final_target.get_anno_uniprot()
+final_target.get_mapg2t_gtf()
+final_target.get_desc()
 
 #-- primary analysis
-#final_target.add_fastp_pe()
-#final_target.add_parse_fastp()
-#final_target.add_tophat_align()
-#final_target.add_parse_tophat()
-#final_target.add_star_align()
-#final_target.add_parse_star()
+final_target.add_fastp_pe()
+final_target.add_parse_fastp()
+final_target.add_tophat_align()
+final_target.add_parse_tophat()
+final_target.add_star_align()
+final_target.add_parse_star()
 
-#final_target.add_cufflinks()
-#final_target.add_cuffquant()
-#final_target.add_cuffnorm()
-#final_target.add_cuffdiff()
+final_target.add_cufflinks()
+final_target.add_cuffquant()
+final_target.add_cuffnorm()
+final_target.add_cuffdiff()
 
-#final_target.add_rsem()
+final_target.add_rsem()
 
 #-- gene-fusion analysis
 ##final_target.add_hisat2_align()
 ##final_target.add_arriba()
 
 #-- reporting stream
-#final_target.add_multiqc()
-#final_target.add_parse_cufflinks()
-#final_target.add_parse_cuffnorm()
-#final_target.add_parse_cuffdiff()
-#final_target.add_parse_rsem()
+final_target.add_multiqc()
+final_target.add_parse_cufflinks()
+final_target.add_parse_cuffnorm()
+final_target.add_parse_cuffdiff()
+final_target.add_parse_rsem()
 ##final_target.add_report()
 
 #----------------------------------------
