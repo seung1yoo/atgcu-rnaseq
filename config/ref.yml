@@ -11,14 +11,24 @@ grch38_ens109:
   anno_gene2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/anno.gene2desc.tsv
   anno_tran2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Homo_sapiens/H_sapiens_GRCh38_ENS109/anno.transcript2desc.tsv
 EquCab3_ens111:
-  genome_fasta: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/data/Equus_caballus.EquCab3.0.dna.toplevel.fa
-  genemodel_gtf: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/data/Equus_caballus.EquCab3.0.111.gtf
+  genome_fasta: /bc_analysis1/siyoo/resources/ensembl/Equus_caballus/111/Equus_caballus.EquCab3.0.dna.toplevel.fa
+  genemodel_gtf: /bc_analysis1/siyoo/resources/ensembl/Equus_caballus/111/Equus_caballus.EquCab3.0.111.gtf
+  ens_tsv_uniprot: /bc_analysis1/siyoo/resources/ensembl/Equus_caballus/111/Equus_caballus.EquCab3.0.111.uniprot.tsv
+  ens_mysql_gene: /bc_analysis1/siyoo/resources/ensembl/Equus_caballus/111/gene.txt
+  ens_mysql_transcript: /bc_analysis1/siyoo/resources/ensembl/Equus_caballus/111/transcript.txt
+  uniprot_dat: /storage2/User/siyoo/resource/public/uniprot/v230718/uniprot_sprot.dat
+  tophat_index: src/tophat_index/genome
   star_index: src/star_index
   hisat2_index: src/hisat2_index
-  tophat_index: src/tophat_index/genome
   rsem_index: src/rsem_index/reference
-  anno_gene2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/anno.gene2desc.tsv
-  anno_tran2desc: /storage2/User/siyoo/resource/rnaseq_anlppl_refbuild/Equus_caballus/E_caballus_EquCab3_ENS111/anno.transcript2desc.tsv
+  anno_gene2desc: src/anno.gene2desc.tsv
+  anno_gene2go: src/anno.gene2go.tsv
+  anno_gene2ipr: src/anno.gene2ipr.tsv
+  anno_gene2pfam: src/anno.gene2pfam.tsv
+  anno_tran2desc: src/anno.transcript2desc.tsv
+  anno_tran2go: src/anno.transcript2go.tsv
+  anno_tran2ipr: src/anno.transcript2ipr.tsv
+  anno_tran2pfam: src/anno.transcript2pfam.tsv
   arriba_blacklist: null
   arriba_known_fusions: null
   arriba_protein_domains: null

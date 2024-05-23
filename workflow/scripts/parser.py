@@ -9,6 +9,305 @@ logging.basicConfig(level=logging.DEBUG)
 #logging.basicConfig(level=logging.INFO)
 
 
+#!/usr/bin/env python
+# vim: syntax=python tabstop=4 expandtab
+
+
+import os
+import sys
+import re
+import glob
+import shutil
+import gzip
+import subprocess
+from Bio import SwissProt
+from Bio import SeqIO
+
+class GTF:
+    g_dic = dict()
+    t_dic = dict()
+    p_dic = dict()
+    g2t_dic = dict()
+    t2g_dic = dict()
+    is_addVersion_dic = dict()
+
+    def add_gene_biotype(self, gene_id, text):
+        self.g_dic[gene_id]['biotype'] = text
+    def add_gene_name(self, gene_id, text):
+        self.g_dic[gene_id]['symbol'] = text
+    def add_gene_version(self, gene_id, text):
+        self.g_dic[gene_id]['version'] = text
+
+    def add_tran_biotype(self, tran_id, text):
+        self.t_dic[tran_id]['biotype'] = text
+    def add_tran_name(self, tran_id, text):
+        self.t_dic[tran_id]['symbol'] = text
+    def add_tran_version(self, tran_id, text):
+        self.t_dic[tran_id]['version'] = text
+
+    def add_prot_biotype(self, prot_id, text):
+        self.p_dic[prot_id]['biotype'] = text
+    def add_prot_name(self, prot_id, text):
+        self.p_dic[prot_id]['symbol'] = text
+    def add_prot_version(self, prot_id, text):
+        self.p_dic[prot_id]['version'] = text
+
+    def add_addVersionId(self, _id, _version):
+        self.is_addVersion_dic.setdefault('{0}.{1}'.format(_id,_version), _id)
+
+    def init_dics_from_gtf(self, gtf_fn):
+        for line in open(gtf_fn):
+            if line.startswith('#'):
+                continue
+            items = line.rstrip('\n').split('\t')
+            attr_dic = dict()
+            attr_s = [x.strip() for x in items[8].split(';') if x]
+            for attr in attr_s:
+                key = attr.split()[0]
+                value_s = re.findall('\s\"(.*?)\"', attr)
+                if value_s:
+                    value = value_s[0]
+                else:
+                    continue
+                attr_dic.setdefault(key, value)
+
+            if 'gene_id' in attr_dic:
+                gene_id = attr_dic['gene_id']
+                self.g_dic.setdefault(gene_id, {}).setdefault('biotype', 'NA')
+                self.g_dic.setdefault(gene_id, {}).setdefault('symbol', 'NA')
+                self.g_dic.setdefault(gene_id, {}).setdefault('description', 'NA')
+                self.g_dic.setdefault(gene_id, {}).setdefault('version', 'NA')
+                if 'gene_biotype' in attr_dic:
+                    self.add_gene_biotype(gene_id, attr_dic['gene_biotype'])
+                if 'gene_name' in attr_dic:
+                    self.add_gene_name(gene_id, attr_dic['gene_name'])
+                if 'gene_version' in attr_dic:
+                    self.add_gene_version(gene_id, attr_dic['gene_version'])
+                    self.add_addVersionId(gene_id, attr_dic['gene_version'])
+
+                self.g2t_dic.setdefault(gene_id, [])
+
+            if 'transcript_id' in attr_dic:
+                tran_id = attr_dic['transcript_id']
+                self.t_dic.setdefault(tran_id, {}).setdefault('biotype', 'NA')
+                self.t_dic.setdefault(tran_id, {}).setdefault('symbol', 'NA')
+                self.t_dic.setdefault(tran_id, {}).setdefault('description', 'NA')
+                self.t_dic.setdefault(tran_id, {}).setdefault('version', 'NA')
+                if 'transcript_biotype' in attr_dic:
+                    self.add_tran_biotype(tran_id, attr_dic['transcript_biotype'])
+                if 'transcript_name' in attr_dic:
+                    self.add_tran_name(tran_id, attr_dic['transcript_name'])
+                if 'transcript_version' in attr_dic:
+                    self.add_tran_version(tran_id, attr_dic['transcript_version'])
+                    self.add_addVersionId(tran_id, attr_dic['transcript_version'])
+
+                if not tran_id in self.g2t_dic[gene_id]:
+                    self.g2t_dic[gene_id].append(tran_id)
+
+                self.t2g_dic.setdefault(tran_id, gene_id)
+
+            if 'protein_id' in attr_dic:
+                prot_id = attr_dic['protein_id']
+                self.p_dic.setdefault(prot_id, {}).setdefault('biotype', 'NA')
+                self.p_dic.setdefault(prot_id, {}).setdefault('symbol', 'NA')
+                self.p_dic.setdefault(prot_id, {}).setdefault('description', 'NA')
+                self.p_dic.setdefault(prot_id, {}).setdefault('version', 'NA')
+                if 'protein_biotype' in attr_dic:
+                    self.add_prot_biotype(prot_id, attr_dic['protein_biotype'])
+                if 'protein_name' in attr_dic:
+                    self.add_prot_name(prot_id, attr_dic['protein_name'])
+                if 'protein_version' in attr_dic:
+                    self.add_prot_version(prot_id, attr_dic['protein_version'])
+                    self.add_addVersionId(prot_id, attr_dic['protein_version'])
+
+
+class GetAnnoUniprot(GTF):
+    def __init__(self, wkdir, gtf, tsv, dat):
+        self.init_dics_from_gtf(gtf)
+
+        self.wkdir = wkdir
+        self.tsv = tsv
+        self.dat = dat
+
+        self.xref_dic = dict()
+        self.id_dic = dict()
+        self.parse_tsv()
+        self.parse_dat()
+
+        self.write_anno('gene', 'go')
+        self.write_anno('transcript', 'go')
+        self.write_anno('gene', 'ipr')
+        self.write_anno('transcript', 'ipr')
+        self.write_anno('gene', 'pfam')
+        self.write_anno('transcript', 'pfam')
+
+    def parse_tsv(self):
+        for line in open(self.tsv):
+            items = line.rstrip('\n').split('\t')
+            if items[0] in ['gene_stable_id']:
+                idx_dic = dict()
+                for idx, item in enumerate(items):
+                    idx_dic.setdefault(item, idx)
+                continue
+            gene_id = items[idx_dic['gene_stable_id']]
+            if not gene_id in self.g_dic:
+                continue
+            tran_id = items[idx_dic['transcript_stable_id']]
+            if not tran_id in self.t_dic:
+                continue
+
+            xref = items[idx_dic['xref']]
+
+            db_name = items[idx_dic['db_name']]
+            if db_name in ['Uniprot/SWISSPROT', 'Uniprot/SPTREMBL']:
+                self.xref_dic.setdefault(xref, {}).setdefault('go',{})
+                self.xref_dic.setdefault(xref, {}).setdefault('ipr',{})
+                self.xref_dic.setdefault(xref, {}).setdefault('pfam',{})
+
+                self.id_dic.setdefault('gene',{}).setdefault(gene_id, {}).setdefault(xref, {})
+                self.id_dic.setdefault('transcript',{}).setdefault(tran_id, {}).setdefault(xref, {})
+            #
+
+    def parse_dat(self):
+        for record in SwissProt.parse(open(self.dat)):
+            xref = record.accessions[0]
+            if not xref in self.xref_dic:
+                continue
+            for units in record.cross_references:
+                if units[0] in ['GO']:
+                    go_id = units[1]
+                    go_desc = units[2]
+                    go_evidence = units[3]
+                    self.xref_dic[xref]['go'].setdefault(go_id, go_desc)
+                elif units[0] in ['InterPro']:
+                    ipr_id = units[1]
+                    ipr_desc = units[2]
+                    self.xref_dic[xref]['ipr'].setdefault(ipr_id, ipr_desc)
+                elif units[0] in ['Pfam']:
+                    pfam_id = units[1]
+                    pfam_desc = units[2]
+                    self.xref_dic[xref]['pfam'].setdefault(pfam_id, pfam_desc)
+                else:
+                    pass
+            #
+
+    def write_anno(self, level, db):
+        outfn = os.path.join(self.wkdir, 'anno.{0}2{1}.tsv'.format(level, db))
+        outfh = open(outfn, 'w')
+        outfh.write('{0}\n'.format('\t'.join(['ID','ANNO_ID','ANNO_DESC'])))
+        for level_id, xref_dic in sorted(self.id_dic[level].items()):
+            for xref_id in xref_dic:
+                anno_dic = self.xref_dic[xref_id][db]
+                for anno_id, anno_desc in sorted(anno_dic.items()):
+                    items = [level_id, anno_id, anno_desc]
+                    outfh.write('{0}\n'.format('\t'.join(items)))
+        outfh.close()
+
+
+class GetDesc(GTF):
+    def __init__(self, wkdir, gtf, mysqlgene, mysqltran):
+        self.init_dics_from_gtf(gtf)
+        self.add_desc(mysqlgene)
+        #self.add_gene_desc(mysqlgene)
+        #self.add_tran_desc(mysqltran)
+
+        self.writer(self.g_dic, os.path.join(wkdir, 'anno.gene2desc.tsv'))
+        self.writer(self.t_dic, os.path.join(wkdir, 'anno.transcript2desc.tsv'))
+
+    def add_desc(self, fn):
+        for line in open(fn):
+            items = line.rstrip('\n').split('\t')
+            desc = items[9]
+            g_id = items[12]
+            if not g_id in self.g_dic:
+                print('{0} is not in gtf'.format(g_id))
+                continue
+            self.g_dic[g_id]['description'] = desc
+            for t_id in self.g2t_dic[g_id]:
+                self.t_dic[t_id]['description'] = desc
+
+    def writer(self, _dic, outfn):
+        outfh = open(outfn, 'w')
+        outfh.write('{0}\n'.format('\t'.join(['ID','BIOTYPE','SYMBOL','DESCRIPTION'])))
+        for _id, info_dic in sorted(_dic.items()):
+            items = [_id]
+            items.append(info_dic['biotype'])
+            items.append(info_dic['symbol'])
+            items.append(info_dic['description'])
+            outfh.write('{0}\n'.format('\t'.join(items)))
+        outfh.close()
+
+    def _find_pattern(self, pattern, string):
+        m = re.findall(pattern, string)
+        if m:
+            return m[0]
+        else:
+            return ''
+
+    def _parse_fasta(self):
+        for record in SeqIO.parse(open(self.fasta), 'fasta'):
+            transcript = record.id
+            _desc = record.description
+            chromosome = self.find_pattern('\schromosome\:(.*?)\sgene\:', _desc)
+            gene = self.find_pattern('\sgene\:(.*?)\sgene_biotype:', _desc)
+            biotype = self.find_pattern('\sgene_biotype\:(.*?)\stranscript_biotype:', _desc)
+            symbol = self.find_pattern('\sgene_symbol\:(.*?)\sdescription:', _desc)
+            description = self.find_pattern('\sdescription\:(.*?)$', _desc)
+
+            if gene in self.id_version_dic:
+                gene = self.id_version_dic[gene]
+            if transcript in self.id_version_dic:
+                transcript = self.id_version_dic[transcript]
+
+            if gene in self.g_dic:
+                self.g_dic[gene]['biotype'] = biotype
+                self.g_dic[gene]['symbol'] = symbol
+                self.g_dic[gene]['description'] = description
+
+            if transcript in self.t_dic:
+                self.t_dic[transcript]['biotype'] = biotype
+                self.t_dic[transcript]['symbol'] = symbol
+                self.t_dic[transcript]['description'] = description
+
+class GetMapG2TGTF(GTF):
+    def __init__(self, wkdir, gtf):
+        self.init_dics_from_gtf(gtf)
+        self.writer(os.path.join(wkdir, 'map.gene2transcript.tsv'))
+
+    def writer(self, outfn):
+        outfh = open(outfn, 'w')
+        for gene_id, tran_id_s in sorted(self.g2t_dic.items()):
+            if len(tran_id_s) in [0]:
+                print('{0} has not transcripts'.format(gene_id))
+                sys.exit()
+            for tran_id in sorted(tran_id_s):
+                g_biotype = self.g_dic[gene_id]['biotype']
+                t_biotype = self.t_dic[tran_id]['biotype']
+                outfh.write('{0}\n'.format('\t'.join([gene_id, g_biotype, tran_id, t_biotype])))
+        outfh.close()
+
+class CleanupFasta(GTF):
+    def __init__(self, wkdir, target, gtf, infasta, outfasta):
+        self.init_dics_from_gtf(gtf)
+
+        self.makefasta(target, infasta, outfasta)
+
+    def makefasta(self, target, infasta, outfasta):
+        outfh = open(outfasta, 'w')
+        for record in SeqIO.parse(open(infasta), 'fasta'):
+            if record.id in self.is_addVersion_dic:
+                record.id = self.is_addVersion_dic[record.id]
+            if target in ['cds', 'cdna']:
+                if record.id in self.t_dic:
+                    SeqIO.write(record, outfh, 'fasta')
+            elif target in ['pep']:
+                if record.id in self.p_dic:
+                    SeqIO.write(record, outfh, 'fasta')
+            else:
+                pass
+        outfh.close()
+
+
 class Fastp:
     def __init__(self, wkdir, outprefix):
         self.wkdir = Path(wkdir)
@@ -1148,6 +1447,15 @@ def main(args):
         cuffdiff.write_deg_stat_tsv("gene", "genes.stats.xls")
         cuffdiff.write_deg_stat_tsv("isoform", "isoforms.stats.xls")
 
+    elif args.biotool in ['get_anno_uniprot']:
+        get_anno_uniprot = GetAnnoUniprot(args.wkdir, args.gtf, args.tsv, args.dat)
+    elif args.biotool in ['get_anno_uniprot']:
+        get_mapg2t_gtf = GetMapG2TGTF(args.wkdir, args.gtf)
+    elif args.biotool in ['get_anno_uniprot']:
+        get_desc = GetDesc(args.wkdir, args.gtf, args.mysqlgene, args.mysqltran)
+    elif args.biotool in ['get_anno_uniprot']:
+        cleanup_fasta = CleanupFasta(args.wkdir, args.target, args.gtf, args.infasta, args.outfasta)
+
 
 if __name__=='__main__':
     import argparse
@@ -1190,6 +1498,25 @@ if __name__=='__main__':
     subparser.add_argument("--tran2desc", default="anno.transcript2desc.tsv")
     subparser.add_argument("--log2fc-criteria", default=0.584, type=float)
     subparser.add_argument("--p-criteria", default=0.05, type=float)
+
+    subparser = subparsers.add_parser('get_anno_uniprot')
+    subparser.add_argument('--gtf')
+    subparser.add_argument('--tsv')
+    subparser.add_argument('--dat')
+
+    subparser = subparsers.add_parser('get_mapg2t_gtf')
+    subparser.add_argument('--gtf')
+
+    subparser = subparsers.add_parser('get_desc')
+    subparser.add_argument('--gtf')
+    subparser.add_argument('--mysqlgene')
+    subparser.add_argument('--mysqltran')
+
+    subparser = subparsers.add_parser('cleanup_fasta')
+    subparser.add_argument('--target')
+    subparser.add_argument('--gtf')
+    subparser.add_argument('--infasta')
+    subparser.add_argument('--outfasta')
 
     args = parser.parse_args()
     main(args)

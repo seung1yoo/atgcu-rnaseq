@@ -59,6 +59,14 @@ class FinalTarget:
         self.anl_path = Path(anldir)
         self.src_path = Path(srcdir)
 
+    def get_anno_uniprot(self):
+        self.files.append(config["anno_gene2go"])
+        self.files.append(config["anno_gene2ipr"])
+        self.files.append(config["anno_gene2pfam"])
+        self.files.append(config["anno_tran2go"])
+        self.files.append(config["anno_tran2ipr"])
+        self.files.append(config["anno_tran2pfam"])
+
     def add_fastp_pe(self):
         for sample_name in config["sample_names"]:
             self.files.append(self.anl_path / "fastp" / sample_name / f"{sample_name}_R1.fastq.gz")
@@ -190,7 +198,6 @@ def make_cuffdiff_label(compare):
     _label.append(config["compares"][compare]["control"]["group_name"])
     _label.append(config["compares"][compare]["treatment"]["group_name"])
     return ",".join(_label)
-
 
 
 
