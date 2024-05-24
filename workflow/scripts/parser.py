@@ -1243,7 +1243,7 @@ class Rsem:
 
         cols = ['ID']
         cols.extend(self.sample_id_s)
-        cols.extend(["GeneSymbol","Description","Biotype"])
+        cols.extend(["Locus","GeneName","GeneSymbol","Description","Biotype"])
         outfh.write("{0}\n".format('\t'.join(cols)))
 
         for _id, s_dic in sorted(self.rsem_dic.items()):
@@ -1258,10 +1258,14 @@ class Rsem:
                 values.append(value)
 
             if _type in ["genes"] and _id in self.gene_info_dic:
+                items.append("")
+                items.append(self.gene_info_dic[_id]['symbol'])
                 items.append(self.gene_info_dic[_id]['symbol'])
                 items.append(self.gene_info_dic[_id]['description'])
                 items.append(self.gene_info_dic[_id]['biotype'])
             elif _type in ["isoforms"] and _id in self.tran_info_dic:
+                items.append("")
+                items.append(self.tran_info_dic[_id]['symbol'])
                 items.append(self.tran_info_dic[_id]['symbol'])
                 items.append(self.tran_info_dic[_id]['description'])
                 items.append(self.tran_info_dic[_id]['biotype'])
