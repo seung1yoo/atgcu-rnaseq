@@ -33,3 +33,27 @@ EquCab3_ens111:
   arriba_blacklist: null
   arriba_known_fusions: null
   arriba_protein_domains: null
+grcm39_ens112:
+  genome_fasta: /bc_storage/BioResources/Reference/mus_musculus/ens112/Mus_musculus.GRCm39.dna.toplevel.fa
+  genemodel_gtf: /bc_storage/BioResources/Reference/mus_musculus/ens112/Mus_musculus.GRCm39.112.gtf
+  ens_tsv_uniprot: /bc_storage/BioResources/Reference/mus_musculus/ens112/Mus_musculus.GRCm39.112.uniprot.tsv
+  ens_mysql_gene: /bc_storage/BioResources/Reference/mus_musculus/ens112/gene.txt
+  ens_mysql_tran: /bc_storage/BioResources/Reference/mus_musculus/ens112/transcript.txt
+  uniprot_dat: /bc_analysis1/siyoo/resources/uniprot/release_2024_02/uniprot_sprot.dat
+  tophat_index: src/tophat_index/genome
+  star_index: src/star_index
+  hisat2_index: src/hisat2_index
+  rsem_index: src/rsem_index/reference
+  map_gene2tran: src/map.gene2transcript.tsv
+  anno_gene2desc: src/anno.gene2desc.tsv
+  anno_tran2desc: src/anno.transcript2desc.tsv
+  anno_gene2go: src/anno.gene2go.tsv
+  anno_gene2ipr: src/anno.gene2ipr.tsv
+  anno_gene2pfam: src/anno.gene2pfam.tsv
+  anno_tran2go: src/anno.transcript2go.tsv
+  anno_tran2ipr: src/anno.transcript2ipr.tsv
+  anno_tran2pfam: src/anno.transcript2pfam.tsv
+  arriba_blacklist: null
+  arriba_known_fusions: null
+  arriba_protein_domains: null
+
