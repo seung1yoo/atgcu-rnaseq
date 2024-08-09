@@ -1,157 +1,31 @@
 samples:
-  G1-1-2:
+  Root-Control-12h:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-1-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-1-2_R2.fastq.gz
-  G1-1-3:
+    fastq_1: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-Control-12h_1.fastq.gz
+    fastq_2: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-Control-12h_2.fastq.gz
+    group: Root-Control
+  Root-Control-24h:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-1-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-1-3_R2.fastq.gz
-  G1-1-4:
+    fastq_1: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-Control-24h_1.fastq.gz
+    fastq_2: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-Control-24h_2.fastq.gz
+    group: Root-Control
+  Root-Control-6h:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-1-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-1-4_R2.fastq.gz
-  G1-12-1:
+    fastq_1: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-Control-6h_1.fastq.gz
+    fastq_2: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-Control-6h_2.fastq.gz
+    group: Root-Control
+  Root-PA01-12h:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-12-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-12-1_R2.fastq.gz
-  G1-12-2:
+    fastq_1: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-PA01-12h_1.fastq.gz
+    fastq_2: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-PA01-12h_2.fastq.gz
+    group: Root-PA01
+  Root-PA01-24h:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-12-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-12-2_R2.fastq.gz
-  G1-12-4:
+    fastq_1: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-PA01-24h_1.fastq.gz
+    fastq_2: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-PA01-24h_2.fastq.gz
+    group: Root-PA01
+  Root-PA01-6h:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-12-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-12-4_R2.fastq.gz
-  G1-16-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-16-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-16-1_R2.fastq.gz
-  G1-16-3:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-16-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-16-3_R2.fastq.gz
-  G1-16-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-16-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-16-4_R2.fastq.gz
-  G1-5-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-5-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-5-1_R2.fastq.gz
-  G1-5-3:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-5-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-5-3_R2.fastq.gz
-  G1-5-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-5-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G1-5-4_R2.fastq.gz
-  G2-1-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-1-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-1-1_R2.fastq.gz
-  G2-1-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-1-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-1-2_R2.fastq.gz
-  G2-1-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-1-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-1-4_R2.fastq.gz
-  G2-12-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-12-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-12-1_R2.fastq.gz
-  G2-12-3:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-12-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-12-3_R2.fastq.gz
-  G2-12-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-12-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-12-4_R2.fastq.gz
-  G2-16-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-16-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-16-2_R2.fastq.gz
-  G2-16-3:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-16-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-16-3_R2.fastq.gz
-  G2-16-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-16-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-16-4_R2.fastq.gz
-  G2-5-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-5-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-5-2_R2.fastq.gz
-  G2-5-3:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-5-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-5-3_R2.fastq.gz
-  G2-5-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-5-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G2-5-4_R2.fastq.gz
-  G3-1-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-1-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-1-1_R2.fastq.gz
-  G3-1-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-1-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-1-2_R2.fastq.gz
-  G3-1-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-1-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-1-4_R2.fastq.gz
-  G3-12-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-12-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-12-1_R2.fastq.gz
-  G3-12-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-12-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-12-2_R2.fastq.gz
-  G3-12-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-12-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-12-4_R2.fastq.gz
-  G3-16-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-16-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-16-1_R2.fastq.gz
-  G3-16-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-16-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-16-2_R2.fastq.gz
-  G3-16-3:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-16-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-16-3_R2.fastq.gz
-  G3-5-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-5-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-5-1_R2.fastq.gz
-  G3-5-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-5-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-5-2_R2.fastq.gz
-  G3-5-4:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-5-4_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G3-5-4_R2.fastq.gz
-  G6-16-1:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G6-16-1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G6-16-1_R2.fastq.gz
-  G6-16-2:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G6-16-2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G6-16-2_R2.fastq.gz
-  G6-16-3:
-    cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G6-16-3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/KKU_Mouse_GLC24013-RNAS_240807/demux2ready/readyfastq/G6-16-3_R2.fastq.gz
+    fastq_1: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-PA01-6h_1.fastq.gz
+    fastq_2: /storage2/User/siyoo/project/test_edurnaseq/RawData/Root-PA01-6h_2.fastq.gz
+    group: Root-PA01
