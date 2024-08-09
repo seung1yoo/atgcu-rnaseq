@@ -160,8 +160,8 @@ rule parse_cuffdiff:
     benchmark: "benchmarks/parse_cuffdiff.tsv"
     message: "parse_cuffdiff is being run"
     params:
-        log2fc_criteria=0.584,
-        p_criteria=0.05
+        log2fc_criteria=config["log2fc_criteria"],
+        p_criteria=config["p_criteria"]
     shell:
         "python workflow/scripts/parser.py cuffdiff"
         " --outprefix anl/table/deg"
