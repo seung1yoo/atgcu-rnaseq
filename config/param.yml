@@ -3,5 +3,6 @@ fastp:
 star:
   sjdbOverhang: 150
   outFilterType: "BySJout"
-log2fc_criteria: 1
+log2fc_criteria: 0.584
 p_criteria: 0.05
+q_criteria: 1

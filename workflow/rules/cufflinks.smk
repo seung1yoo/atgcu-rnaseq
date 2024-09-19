@@ -45,8 +45,8 @@ rule parse_cufflinks:
 
 rule cuffquant:
     input:
-        #bam=rules.tophat_align.output.bam
-        bam=rules.star_align.output.sortBam
+        bam=rules.tophat_align.output.bam
+        #bam=rules.star_align.output.sortBam
     output:
         cxb="anl/cuffquant/{sample}/abundances.cxb"
     log: "logs/cuffquant/{sample}.log"
@@ -161,7 +161,8 @@ rule parse_cuffdiff:
     message: "parse_cuffdiff is being run"
     params:
         log2fc_criteria=config["log2fc_criteria"],
-        p_criteria=config["p_criteria"]
+        p_criteria=config["p_criteria"],
+        q_criteria=config["q_criteria"]
     shell:
         "python workflow/scripts/parser.py cuffdiff"
         " --outprefix anl/table/deg"
@@ -169,5 +170,6 @@ rule parse_cuffdiff:
         " --tran2desc {config[anno_tran2desc]}"
         " --log2fc-criteria {params.log2fc_criteria}"
         " --p-criteria {params.p_criteria}"
+        " --q-criteria {params.q_criteria}"
         " > {log} 2>&1"
 

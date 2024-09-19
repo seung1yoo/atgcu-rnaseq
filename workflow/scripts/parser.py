@@ -833,7 +833,7 @@ class Cuffnorm(Cufflinks):
 
 
 class Cuffdiff:
-    def __init__(self, wkdir, outprefix, log2fc_criteria, p_criteria):
+    def __init__(self, wkdir, outprefix, log2fc_criteria, p_criteria, q_criteria):
         self.wkdir = Path(wkdir)
         self.outprefix = outprefix
         self.comp_names = list()
@@ -844,6 +844,7 @@ class Cuffdiff:
         self.tran_info_col_s = ['GeneName', 'Locus']
         self.log2fc_criteria = log2fc_criteria
         self.p_criteria = p_criteria
+        self.q_criteria = q_criteria
 
         # parse gene_exp.diff files
         self.gene_path_dic = dict()
@@ -958,10 +959,27 @@ class Cuffdiff:
                     _diff_dic[_id][comp_name].setdefault('UpDown', 'flat')
                 _diff_dic[_id][comp_name].setdefault('p', p)
                 _diff_dic[_id][comp_name].setdefault('q', q)
-                if abs(log2fc) >= self.log2fc_criteria and float(p) < self.p_criteria:
-                    _diff_dic[_id][comp_name].setdefault('IsDEG', 'yes')
-                else:
-                    _diff_dic[_id][comp_name].setdefault('IsDEG', 'no')
+
+                if self.p_criteria in [1.0] and self.q_criteria in [1.0]: # not use p, q
+                    if abs(log2fc) >= self.log2fc_criteria:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'yes')
+                    else:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'no')
+                elif not self.p_criteria in [1.0] and self.q_criteria in [1.0]: # use p
+                    if abs(log2fc) >= self.log2fc_criteria and float(p) < self.p_criteria:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'yes')
+                    else:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'no')
+                elif self.p_criteria in [1.0] and not self.q_criteria in [1.0]: # use q
+                    if abs(log2fc) >= self.log2fc_criteria and float(q) < self.q_criteria:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'yes')
+                    else:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'no')
+                else: # usually... this way is worked.
+                    if abs(log2fc) >= self.log2fc_criteria and float(p) < self.p_criteria and float(q) < self.q_criteria:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'yes')
+                    else:
+                        _diff_dic[_id][comp_name].setdefault('IsDEG', 'no')
 
         if molecule_type in ["gene"]:
             self.gene_info_dic = _info_dic
@@ -1434,7 +1452,7 @@ def main(args):
 
     elif args.biotool in ['cuffdiff']:
 
-        cuffdiff = Cuffdiff(args.wkdir, args.outprefix, args.log2fc_criteria, args.p_criteria)
+        cuffdiff = Cuffdiff(args.wkdir, args.outprefix, args.log2fc_criteria, args.p_criteria, args.q_criteria)
 
         if Path(args.gene2desc).is_file():
             cuffdiff.anno_xxxx2desc("gene", Path(args.gene2desc), "SYMBOL", "GeneSymbol")
@@ -1500,8 +1518,9 @@ if __name__=='__main__':
     subparser.add_argument("--outprefix", default="MultiParser.Cuffdiff")
     subparser.add_argument("--gene2desc", default="anno.gene2desc.tsv")
     subparser.add_argument("--tran2desc", default="anno.transcript2desc.tsv")
-    subparser.add_argument("--log2fc-criteria", default=0.584, type=float)
+    subparser.add_argument("--log2fc-criteria", default=0.584, type=float) # fc 1.5
     subparser.add_argument("--p-criteria", default=0.05, type=float)
+    subparser.add_argument("--q-criteria", default=1.0, type=float)
 
     subparser = subparsers.add_parser('get_anno_uniprot')
     subparser.add_argument('--gtf')
