@@ -1,10 +1,5 @@
 compid,control,case
-DEG001,A7_2,A7_P20_Normoxia
-DEG002,A7_2,A7_P25_Normoxia
-DEG003,A7_2,A7_P20_Hypoxia
-DEG004,A7_2,A7_P25_Hypoxia
-DEG005,YiP3_2,A7_2
-DEG006,YiP3_2,A7_P20_Normoxia
-DEG007,YiP3_2,A7_P25_Normoxia
-DEG008,YiP3_2,A7_P20_Hypoxia
-DEG009,YiP3_2,A7_P25_Hypoxia
+DEG001,YiP3,YiP3_hepatoblast
+DEG002,YiP3,YiP3_hepatocyte
+DEG003,A7,A7_hepatoblast
+DEG004,A7,A7_hepatocyte

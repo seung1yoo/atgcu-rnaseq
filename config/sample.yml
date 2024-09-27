@@ -1,31 +1,91 @@
 samples:
-  YiP3_2:
-    cuff_librarytype: fr-firststrand
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/YiP3_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/YiP3_2_R2.fastq.gz
-    group: YiP3_2
+  A7_1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_1_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_1_R2.fastq.gz
+    group: A7
   A7_2:
-    cuff_librarytype: fr-firststrand
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_2_R2.fastq.gz
-    group: A7_2
-  A7_P20_Hypoxia:
-    cuff_librarytype: fr-firststrand
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P20_Hypoxia_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P20_Hypoxia_R2.fastq.gz
-    group: A7_P20_Hypoxia
-  A7_P20_Normoxia:
-    cuff_librarytype: fr-firststrand
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P20_Normoxia_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P20_Normoxia_R2.fastq.gz
-    group: A7_P20_Normoxia
-  A7_P25_Hypoxia:
-    cuff_librarytype: fr-firststrand
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P25_Hypoxia_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P25_Hypoxia_R2.fastq.gz
-    group: A7_P25_Hypoxia
-  A7_P25_Normoxia:
-    cuff_librarytype: fr-firststrand
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P25_Normoxia_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/YiP3_OxyTranscriptomics/demux2ready/readyfastq/A7_P25_Normoxia_R2.fastq.gz
-    group: A7_P25_Normoxia
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_2_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_2_R2.fastq.gz
+    group: A7
+  A7_3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_3_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_3_R2.fastq.gz
+    group: A7
+  A7_hepatoblast_1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_1_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_1_R2.fastq.gz
+    group: A7_hepatoblast
+  A7_hepatoblast_2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_2_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_2_R2.fastq.gz
+    group: A7_hepatoblast
+  A7_hepatoblast_3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_3_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_3_R2.fastq.gz
+    group: A7_hepatoblast
+  A7_hepatocyte_1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_1_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_1_R2.fastq.gz
+    group: A7_hepatocyte
+  A7_hepatocyte_2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_2_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_2_R2.fastq.gz
+    group: A7_hepatocyte
+  A7_hepatocyte_3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_3_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_3_R2.fastq.gz
+    group: A7_hepatocyte
+  YiP3_1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_1_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_1_R2.fastq.gz
+    group: YiP3
+  YiP3_2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_2_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_2_R2.fastq.gz
+    group: YiP3
+  YiP3_3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_3_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_3_R2.fastq.gz
+    group: YiP3
+  YiP3_hepatoblast_1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_1_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_1_R2.fastq.gz
+    group: YiP3_hepatoblast
+  YiP3_hepatoblast_2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_2_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_2_R2.fastq.gz
+    group: YiP3_hepatoblast
+  YiP3_hepatoblast_3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_3_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_3_R2.fastq.gz
+    group: YiP3_hepatoblast
+  YiP3_hepatocyte_1:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_1_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_1_R2.fastq.gz
+    group: YiP3_hepatocyte
+  YiP3_hepatocyte_2:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_2_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_2_R2.fastq.gz
+    group: YiP3_hepatocyte
+  YiP3_hepatocyte_3:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_3_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_3_R2.fastq.gz
+    group: YiP3_hepatocyte

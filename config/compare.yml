@@ -1,82 +1,53 @@
 compares:
   DEG001:
     control:
-      group_name: A7_2
+      group_name: YiP3
       samples:
-      - A7_2
+      - YiP3_1
+      - YiP3_2
+      - YiP3_3
     treatment:
-      group_name: A7_P20_Normoxia
+      group_name: YiP3_hepatoblast
       samples:
-      - A7_P20_Normoxia
+      - YiP3_hepatoblast_1
+      - YiP3_hepatoblast_2
+      - YiP3_hepatoblast_3
   DEG002:
     control:
-      group_name: A7_2
+      group_name: YiP3
       samples:
-      - A7_2
+      - YiP3_1
+      - YiP3_2
+      - YiP3_3
     treatment:
-      group_name: A7_P25_Normoxia
+      group_name: YiP3_hepatocyte
       samples:
-      - A7_P25_Normoxia
+      - YiP3_hepatocyte_1
+      - YiP3_hepatocyte_2
+      - YiP3_hepatocyte_3
   DEG003:
     control:
-      group_name: A7_2
+      group_name: A7
       samples:
+      - A7_1
       - A7_2
+      - A7_3
     treatment:
-      group_name: A7_P20_Hypoxia
+      group_name: A7_hepatoblast
       samples:
-      - A7_P20_Hypoxia
+      - A7_hepatoblast_1
+      - A7_hepatoblast_2
+      - A7_hepatoblast_3
   DEG004:
     control:
-      group_name: A7_2
+      group_name: A7
       samples:
+      - A7_1
       - A7_2
+      - A7_3
     treatment:
-      group_name: A7_P25_Hypoxia
+      group_name: A7_hepatocyte
       samples:
-      - A7_P25_Hypoxia
-  DEG005:
-    control:
-      group_name: YiP3_2
-      samples:
-      - YiP3_2
-    treatment:
-      group_name: A7_2
-      samples:
-      - A7_2
-  DEG006:
-    control:
-      group_name: YiP3_2
-      samples:
-      - YiP3_2
-    treatment:
-      group_name: A7_P20_Normoxia
-      samples:
-      - A7_P20_Normoxia
-  DEG007:
-    control:
-      group_name: YiP3_2
-      samples:
-      - YiP3_2
-    treatment:
-      group_name: A7_P25_Normoxia
-      samples:
-      - A7_P25_Normoxia
-  DEG008:
-    control:
-      group_name: YiP3_2
-      samples:
-      - YiP3_2
-    treatment:
-      group_name: A7_P20_Hypoxia
-      samples:
-      - A7_P20_Hypoxia
-  DEG009:
-    control:
-      group_name: YiP3_2
-      samples:
-      - YiP3_2
-    treatment:
-      group_name: A7_P25_Hypoxia
-      samples:
-      - A7_P25_Hypoxia
+      - A7_hepatocyte_1
+      - A7_hepatocyte_2
+      - A7_hepatocyte_3
