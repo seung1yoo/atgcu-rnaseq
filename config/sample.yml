@@ -1,91 +1,431 @@
 samples:
-  A7_1:
+  S001:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_1_R2.fastq.gz
-    group: A7
-  A7_2:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S001_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S001_R2.fastq.gz
+    group: STOKE_PLT
+  S002:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_2_R2.fastq.gz
-    group: A7
-  A7_3:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S002_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S002_R2.fastq.gz
+    group: STOKE_PLT
+  S003:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_3_R2.fastq.gz
-    group: A7
-  A7_hepatoblast_1:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S003_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S003_R2.fastq.gz
+    group: STOKE_PLT
+  S004:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_1_R2.fastq.gz
-    group: A7_hepatoblast
-  A7_hepatoblast_2:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S004_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S004_R2.fastq.gz
+    group: STOKE_PLT
+  S005:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_2_R2.fastq.gz
-    group: A7_hepatoblast
-  A7_hepatoblast_3:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S005_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S005_R2.fastq.gz
+    group: STOKE_PLT
+  S006:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatoblast_3_R2.fastq.gz
-    group: A7_hepatoblast
-  A7_hepatocyte_1:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S006_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S006_R2.fastq.gz
+    group: STOKE_PLT
+  S007:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_1_R2.fastq.gz
-    group: A7_hepatocyte
-  A7_hepatocyte_2:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S007_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S007_R2.fastq.gz
+    group: STOKE_PLT
+  S009:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_2_R2.fastq.gz
-    group: A7_hepatocyte
-  A7_hepatocyte_3:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S009_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S009_R2.fastq.gz
+    group: STOKE_PLT
+  S011:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/A7_hepatocyte_3_R2.fastq.gz
-    group: A7_hepatocyte
-  YiP3_1:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S011_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S011_R2.fastq.gz
+    group: STOKE_PLT
+  S012:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_1_R2.fastq.gz
-    group: YiP3
-  YiP3_2:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S012_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S012_R2.fastq.gz
+    group: STOKE_PLT
+  S013:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_2_R2.fastq.gz
-    group: YiP3
-  YiP3_3:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S013_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S013_R2.fastq.gz
+    group: STOKE_PLT
+  S014:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_3_R2.fastq.gz
-    group: YiP3
-  YiP3_hepatoblast_1:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S014_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S014_R2.fastq.gz
+    group: STOKE_PLT
+  S015:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_1_R2.fastq.gz
-    group: YiP3_hepatoblast
-  YiP3_hepatoblast_2:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S015_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S015_R2.fastq.gz
+    group: STOKE_PLT
+  S016:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_2_R2.fastq.gz
-    group: YiP3_hepatoblast
-  YiP3_hepatoblast_3:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S016_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S016_R2.fastq.gz
+    group: STOKE_PLT
+  S017:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatoblast_3_R2.fastq.gz
-    group: YiP3_hepatoblast
-  YiP3_hepatocyte_1:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S017_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S017_R2.fastq.gz
+    group: STOKE_PLT
+  S018:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_1_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_1_R2.fastq.gz
-    group: YiP3_hepatocyte
-  YiP3_hepatocyte_2:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S018_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S018_R2.fastq.gz
+    group: STOKE_PLT
+  S019:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_2_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_2_R2.fastq.gz
-    group: YiP3_hepatocyte
-  YiP3_hepatocyte_3:
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S019_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S019_R2.fastq.gz
+    group: STOKE_PLT
+  S020:
     cuff_librarytype: fr-unstranded
-    fastq_1: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_3_R1.fastq.gz
-    fastq_2: /bc_analysis1/siyoo/projects/yipscell-human-glc24023-epigenome/HepatoTranscriptomics/demux2ready/readyfastq/YiP3_hepatocyte_3_R2.fastq.gz
-    group: YiP3_hepatocyte
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S020_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S020_R2.fastq.gz
+    group: STOKE_PLT
+  S021:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S021_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S021_R2.fastq.gz
+    group: STOKE_PLT
+  S022:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S022_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S022_R2.fastq.gz
+    group: STOKE_PLT
+  S023:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S023_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S023_R2.fastq.gz
+    group: STOKE_PLT
+  S024:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S024_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S024_R2.fastq.gz
+    group: STOKE_PLT
+  S026:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S026_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S026_R2.fastq.gz
+    group: STOKE_WBC
+  S027:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S027_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S027_R2.fastq.gz
+    group: STOKE_WBC
+  S028:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S028_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S028_R2.fastq.gz
+    group: STOKE_WBC
+  S030:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S030_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S030_R2.fastq.gz
+    group: STOKE_WBC
+  S031:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S031_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S031_R2.fastq.gz
+    group: STOKE_WBC
+  S032:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S032_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S032_R2.fastq.gz
+    group: STOKE_WBC
+  S033:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S033_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S033_R2.fastq.gz
+    group: STOKE_WBC
+  S034:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S034_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S034_R2.fastq.gz
+    group: STOKE_WBC
+  S035:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S035_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S035_R2.fastq.gz
+    group: STOKE_WBC
+  S036:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S036_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S036_R2.fastq.gz
+    group: STOKE_WBC
+  S037:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S037_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S037_R2.fastq.gz
+    group: STOKE_WBC
+  S038:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S038_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S038_R2.fastq.gz
+    group: STOKE_WBC
+  S039:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S039_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S039_R2.fastq.gz
+    group: STOKE_WBC
+  S040:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S040_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S040_R2.fastq.gz
+    group: STOKE_WBC
+  S041:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S041_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S041_R2.fastq.gz
+    group: STOKE_WBC
+  S042:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S042_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S042_R2.fastq.gz
+    group: STOKE_WBC
+  S043:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S043_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S043_R2.fastq.gz
+    group: STOKE_WBC
+  S046:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S046_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S046_R2.fastq.gz
+    group: STOKE_WBC
+  S048:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S048_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S048_R2.fastq.gz
+    group: STOKE_WBC
+  S049:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S049_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S049_R2.fastq.gz
+    group: STOKE_WBC
+  S050:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S050_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S050_R2.fastq.gz
+    group: STOKE_WBC
+  S051:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S051_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S051_R2.fastq.gz
+    group: Control_PLT
+  S052:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S052_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S052_R2.fastq.gz
+    group: Control_WBC
+  S053:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S053_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S053_R2.fastq.gz
+    group: Control_PLT
+  S054:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S054_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S054_R2.fastq.gz
+    group: Control_WBC
+  S055:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S055_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S055_R2.fastq.gz
+    group: Control_PLT
+  S056:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S056_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S056_R2.fastq.gz
+    group: Control_WBC
+  S057:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S057_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S057_R2.fastq.gz
+    group: Control_PLT
+  S058:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S058_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S058_R2.fastq.gz
+    group: Control_WBC
+  S059:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S059_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S059_R2.fastq.gz
+    group: Control_PLT
+  S060:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S060_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S060_R2.fastq.gz
+    group: Control_WBC
+  S061:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S061_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S061_R2.fastq.gz
+    group: Control_PLT
+  S062:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S062_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S062_R2.fastq.gz
+    group: Control_PLT
+  S063:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S063_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S063_R2.fastq.gz
+    group: Control_PLT
+  S064:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S064_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S064_R2.fastq.gz
+    group: Control_PLT
+  S065:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S065_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S065_R2.fastq.gz
+    group: Control_PLT
+  S066:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S066_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S066_R2.fastq.gz
+    group: Control_PLT
+  S067:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S067_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S067_R2.fastq.gz
+    group: Control_PLT
+  S068:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S068_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S068_R2.fastq.gz
+    group: Control_PLT
+  S069:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S069_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S069_R2.fastq.gz
+    group: Control_PLT
+  S071:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S071_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S071_R2.fastq.gz
+    group: Control_PLT
+  S072:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S072_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S072_R2.fastq.gz
+    group: Control_PLT
+  S074:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S074_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S074_R2.fastq.gz
+    group: Control_PLT
+  S076:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S076_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S076_R2.fastq.gz
+    group: Control_PLT
+  S078:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S078_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S078_R2.fastq.gz
+    group: Control_PLT
+  S079:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S079_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S079_R2.fastq.gz
+    group: Control_PLT
+  S080:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S080_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S080_R2.fastq.gz
+    group: Control_PLT
+  S081:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S081_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S081_R2.fastq.gz
+    group: Control_PLT
+  S082:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S082_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S082_R2.fastq.gz
+    group: Control_PLT
+  S083:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S083_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S083_R2.fastq.gz
+    group: Control_PLT
+  S084:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S084_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S084_R2.fastq.gz
+    group: Control_PLT
+  S086:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S086_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S086_R2.fastq.gz
+    group: Control_PLT
+  S087:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S087_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S087_R2.fastq.gz
+    group: Control_PLT
+  S088:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S088_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S088_R2.fastq.gz
+    group: Control_PLT
+  S089:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S089_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S089_R2.fastq.gz
+    group: Control_PLT
+  S091:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S091_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S091_R2.fastq.gz
+    group: Control_WBC
+  S093:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S093_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S093_R2.fastq.gz
+    group: Control_WBC
+  S094:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S094_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S094_R2.fastq.gz
+    group: Control_WBC
+  S095:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S095_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S095_R2.fastq.gz
+    group: Control_WBC
+  S096:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S096_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S096_R2.fastq.gz
+    group: Control_WBC
+  S097:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S097_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S097_R2.fastq.gz
+    group: Control_WBC
+  S098:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S098_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S098_R2.fastq.gz
+    group: Control_WBC
+  S099:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S099_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S099_R2.fastq.gz
+    group: Control_WBC
+  S100:
+    cuff_librarytype: fr-unstranded
+    fastq_1: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S100_R1.fastq.gz
+    fastq_2: /bc_analysis1/siyoo/projects/GLC24026-RNAS/demux2ready/readyfastq/S100_R2.fastq.gz
+    group: Control_WBC
