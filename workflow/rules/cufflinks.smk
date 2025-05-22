@@ -168,6 +168,8 @@ rule parse_cuffdiff:
         " --outprefix anl/table/deg"
         " --gene2desc {config[anno_gene2desc]}"
         " --tran2desc {config[anno_tran2desc]}"
+        " --gene2go {config[anno_gene2go]}"
+        " --tran2go {config[anno_tran2go]}"
         " --log2fc-criteria {params.log2fc_criteria}"
         " --p-criteria {params.p_criteria}"
         " --q-criteria {params.q_criteria}"

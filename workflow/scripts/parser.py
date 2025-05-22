@@ -1010,6 +1010,58 @@ class Cuffdiff:
             self.tran_info_col_s.append(key)
 
         return 1
+    
+    def anno_xxxx2go(self, molecule_type, xxxx2go_fp):
+        if molecule_type in ["gene"]:
+            _info_dic = self.gene_info_dic
+            _info_col_s = self.gene_info_col_s
+        elif molecule_type in ["isoform"]:
+            _info_dic = self.tran_info_dic
+            _info_col_s = self.tran_info_col_s
+
+        # add GO to headers
+        for go_category in ["CC", "MF", "BP"]:
+            if f"GO:{go_category}" not in _info_col_s:
+                _info_col_s.append(f"GO:{go_category}")
+
+        for line in xxxx2go_fp.open():
+            items = line.rstrip('\n').split('\t')
+            if items[0] in ["ID"]:
+                idx_dic = dict()
+                for idx, item in enumerate(items):
+                    idx_dic.setdefault(item, idx)
+                continue
+            _id = items[idx_dic["ID"]]
+            go_id = items[idx_dic["ANNO_ID"]]
+            _go_desc = items[idx_dic["ANNO_DESC"]]
+            _go_category = _go_desc.split(':')[0]
+            go_category = None
+            if _go_category in ["C"]:
+                go_category = "CC"
+            elif _go_category in ["F"]:
+                go_category = "MF"
+            elif _go_category in ["P"]:
+                go_category = "BP"
+            go_term = _go_desc.split(':')[1]
+
+            # init GO dic
+            if _id in _info_dic:
+                _info_dic[_id].setdefault("GO:CC", {})
+                _info_dic[_id].setdefault("GO:MF", {})
+                _info_dic[_id].setdefault("GO:BP", {})
+                _info_dic[_id][f"GO:{go_category}"].setdefault(go_id, go_term)
+            else:
+                logging.warning(f"WARNING: {_id} is not in {molecule_type} info dic")
+
+
+        if molecule_type in ["gene"]:
+            self.gene_info_dic = _info_dic
+            self.gene_info_col_s = _info_col_s
+        elif molecule_type in ["isoform"]:
+            self.tran_info_dic = _info_dic
+            self.tran_info_col_s = _info_col_s
+
+        return 1
 
     def write_deg_tsv(self, molecule_type, _outfn):
         if molecule_type in ["gene"]:
@@ -1463,6 +1515,11 @@ def main(args):
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "SYMBOL", "TranscriptSymbol")
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "DESCRIPTION", "Description")
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "BIOTYPE", "Biotype")
+        
+        if Path(args.gene2go).is_file():
+            cuffdiff.anno_xxxx2go("gene", Path(args.gene2go))
+        if Path(args.tran2go).is_file():
+            cuffdiff.anno_xxxx2go("isoform", Path(args.tran2go))
 
         cuffdiff.write_deg_tsv("gene", "genes.xls")
         cuffdiff.write_deg_tsv("isoform", "isoforms.xls")
@@ -1518,6 +1575,8 @@ if __name__=='__main__':
     subparser.add_argument("--outprefix", default="MultiParser.Cuffdiff")
     subparser.add_argument("--gene2desc", default="anno.gene2desc.tsv")
     subparser.add_argument("--tran2desc", default="anno.transcript2desc.tsv")
+    subparser.add_argument("--gene2go", default="anno.gene2go.tsv")
+    subparser.add_argument("--tran2go", default="anno.transcript2go.tsv")
     subparser.add_argument("--log2fc-criteria", default=0.584, type=float) # fc 1.5
     subparser.add_argument("--p-criteria", default=0.05, type=float)
     subparser.add_argument("--q-criteria", default=1.0, type=float)
