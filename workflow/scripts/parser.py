@@ -489,11 +489,13 @@ class Tophat:
 
 
 class Cufflinks:
-    def __init__(self, wkdir, outprefix, gene2desc, tran2desc):
+    def __init__(self, wkdir, outprefix, gene2desc, tran2desc, gene2go, tran2go):
         self.wkdir = Path(wkdir)
         self.sample_names = list()
         self.gene2desc_fp = Path(gene2desc)
         self.tran2desc_fp = Path(tran2desc)
+        self.gene2go_fp = Path(gene2go)
+        self.tran2go_fp = Path(tran2go)
 
         # setting vars for annotation
         self.header_names = list()
@@ -662,6 +664,56 @@ class Cufflinks:
                 continue
             _id = items[idx_dic["ID"]]
             _info_dic.setdefault(_id, {}).setdefault(key, items[idx_dic[colname]])
+
+        if molecule_type in ["genes"]:
+            self.gene_info_dic = _info_dic
+        elif molecule_type in ["isoforms"]:
+            self.tran_info_dic = _info_dic
+
+        return 1
+
+    def anno_xxxx2go(self, molecule_type, xxxx2go_fp):
+        if molecule_type in ["genes"]:
+            _info_dic = self.gene_info_dic
+        elif molecule_type in ["isoforms"]:
+            _info_dic = self.tran_info_dic
+
+        # add GO to headers
+        for go_category in ["CC", "MF", "BP"]:
+            if f"GO:{go_category}" not in self.header_names:
+                self.header_names.append(f"GO:{go_category}")
+            if f"GO:{go_category}" not in self.anno_names:
+                self.anno_names.append(f"GO:{go_category}")
+
+        for line in xxxx2go_fp.open():
+            items = line.rstrip('\n').split('\t')
+            if items[0] in ["ID"]:
+                idx_dic = dict()
+                for idx, item in enumerate(items):
+                    idx_dic.setdefault(item, idx)
+                continue
+            _id = items[idx_dic["ID"]]
+            go_id = items[idx_dic["ANNO_ID"]]
+            _go_desc = items[idx_dic["ANNO_DESC"]]
+            _go_category = _go_desc.split(':')[0]
+            go_category = None
+            if _go_category in ["C"]:
+                go_category = "CC"
+            elif _go_category in ["F"]:
+                go_category = "MF"
+            elif _go_category in ["P"]:
+                go_category = "BP"
+            go_term = _go_desc.split(':')[1]
+
+            # init GO dic
+            if _id in _info_dic:
+                _info_dic[_id].setdefault("GO:CC", {})
+                _info_dic[_id].setdefault("GO:MF", {})
+                _info_dic[_id].setdefault("GO:BP", {})
+                _info_dic[_id][f"GO:{go_category}"].setdefault(go_id, go_term)
+            else:
+                logging.warning(f"WARNING: {_id} is not in {molecule_type} info dic")
+
 
         if molecule_type in ["genes"]:
             self.gene_info_dic = _info_dic
@@ -1010,7 +1062,7 @@ class Cuffdiff:
             self.tran_info_col_s.append(key)
 
         return 1
-    
+
     def anno_xxxx2go(self, molecule_type, xxxx2go_fp):
         if molecule_type in ["gene"]:
             _info_dic = self.gene_info_dic
@@ -1424,7 +1476,7 @@ def main(args):
 
     elif args.biotool in ['cufflinks']:
 
-        cufflinks = Cufflinks(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
+        cufflinks = Cufflinks(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc, args.gene2go, args.tran2go)
 
         cufflinks.find_fpkm_tracking_path("genes", "anl/cufflinks")
         if cufflinks.gene2desc_fp.is_file():
@@ -1451,18 +1503,22 @@ def main(args):
 
     elif args.biotool in ['cuffnorm']:
 
-        cuffnorm = Cuffnorm(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc)
+        cuffnorm = Cuffnorm(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc, args.gene2go, args.tran2go)
 
         cuffnorm.find_fpkm_table_path("genes", "anl/cuffnorm")
         if cuffnorm.gene2desc_fp.is_file():
             cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "BIOTYPE", "biotype")
             cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "SYMBOL", "symbol")
             cuffnorm.anno_xxxx2desc("genes", cuffnorm.gene2desc_fp, "DESCRIPTION", "description")
+        if cuffnorm.gene2go_fp.is_file():
+            cuffnorm.anno_xxxx2go("genes", cuffnorm.gene2go_fp)
         cuffnorm.parse_fpkm_table_path("genes")
         cuffnorm.write_fpkm_tsv("genes", 0.0, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.all.xls")
         cuffnorm.write_fpkm_tsv("genes", 0.3, cuffnorm.wkdir / f"{args.outprefix}.genes.fpkm.exp.xls")
         cuffnorm.write_stat_exp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.exp.xls")
         cuffnorm.write_stat_coexp("genes", cuffnorm.wkdir / f"{args.outprefix}.genes.stats.coexp.xls")
+
+        cuffnorm = Cuffnorm(args.wkdir, args.outprefix, args.gene2desc, args.tran2desc, args.gene2go, args.tran2go)
 
         cuffnorm.find_fpkm_table_path("isoforms", "anl/cuffnorm")
         if cuffnorm.tran2desc_fp.is_file():
@@ -1515,11 +1571,12 @@ def main(args):
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "SYMBOL", "TranscriptSymbol")
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "DESCRIPTION", "Description")
             cuffdiff.anno_xxxx2desc("isoform", Path(args.tran2desc), "BIOTYPE", "Biotype")
-        
+
         if Path(args.gene2go).is_file():
             cuffdiff.anno_xxxx2go("gene", Path(args.gene2go))
         if Path(args.tran2go).is_file():
-            cuffdiff.anno_xxxx2go("isoform", Path(args.tran2go))
+            #cuffdiff.anno_xxxx2go("isoform", Path(args.tran2go))
+            pass # file size is too large
 
         cuffdiff.write_deg_tsv("gene", "genes.xls")
         cuffdiff.write_deg_tsv("isoform", "isoforms.xls")
@@ -1564,6 +1621,8 @@ if __name__=='__main__':
     subparser.add_argument("--outprefix", default="MultiParser.Cuffnorm")
     subparser.add_argument("--gene2desc", default="anno.gene2desc.tsv")
     subparser.add_argument("--tran2desc", default="anno.transcript2desc.tsv")
+    subparser.add_argument("--gene2go", default="anno.gene2go.tsv")
+    subparser.add_argument("--tran2go", default="anno.transcript2go.tsv")
 
     subparser = subparsers.add_parser("rsem")
     subparser.add_argument("--outprefix", default="MultiParser.Rsem")
