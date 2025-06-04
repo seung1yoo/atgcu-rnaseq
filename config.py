@@ -13,10 +13,11 @@ class ConfigMaker:
 
     def update_sample_conf_dic(self, _path, _tag, _fastq_key):
         sample_name = _path.name.split(_tag)[0]
-        self.sample_conf_dic["samples"].setdefault(sample_name, {})
-        self.sample_conf_dic["samples"][sample_name].setdefault(_fastq_key, str(_path))
-        self.sample_conf_dic["samples"][sample_name].setdefault("cuff_librarytype", "fr-unstranded")
-        self.sample_conf_dic["samples"][sample_name].setdefault("group", "null")
+        if sample_name in self.sample_conf_dic["samples"]:
+            self.sample_conf_dic["samples"][sample_name][_fastq_key] = str(_path)
+        else:
+            print(f"WARNNING : {sample_name} {str(_path)} is not in meta/sample_meta.csv. plz double check!")
+
         return 1
 
     def load_sample_meta(self, _path):
@@ -29,7 +30,12 @@ class ConfigMaker:
                 continue
             sample_name = items[idx_dic["sample"]]
             group = items[idx_dic["group"]]
-            self.sample_conf_dic["samples"][sample_name]["group"] = group
+
+            self.sample_conf_dic["samples"].setdefault(sample_name, {})
+            for _fastq_key in ["fastq_1", "fastq_2"]:
+                self.sample_conf_dic["samples"][sample_name].setdefault(_fastq_key, Path())
+            self.sample_conf_dic["samples"][sample_name].setdefault("cuff_librarytype", "fr-unstranded")
+            self.sample_conf_dic["samples"][sample_name].setdefault("group", group)
 
     def grep_fastq_gz(self, fastq_dir):
         for _path in Path(fastq_dir).glob("*.fastq.gz"):
@@ -89,10 +95,10 @@ def main(args):
 
 
     configmaker = ConfigMaker(args.config_dir)
-    configmaker.grep_fastq_gz(args.fastq_dir)
 
     if Path(args.sample_meta).exists():
         configmaker.load_sample_meta(Path(args.sample_meta))
+        configmaker.grep_fastq_gz(args.fastq_dir)
     configmaker.write_sample_conf(f"{args.config_dir}/sample.yml")
 
     if Path(args.compare_meta).exists():
