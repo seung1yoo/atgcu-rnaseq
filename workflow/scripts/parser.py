@@ -1616,6 +1616,8 @@ if __name__=='__main__':
     subparser.add_argument("--outprefix", default="MultiParser.Cufflinks")
     subparser.add_argument("--gene2desc", default="anno.gene2desc.tsv")
     subparser.add_argument("--tran2desc", default="anno.transcript2desc.tsv")
+    subparser.add_argument("--gene2go", default="anno.gene2go.tsv")
+    subparser.add_argument("--tran2go", default="anno.transcript2go.tsv")
 
     subparser = subparsers.add_parser("cuffnorm")
     subparser.add_argument("--outprefix", default="MultiParser.Cuffnorm")

@@ -42,6 +42,8 @@ rule parse_cufflinks:
         " --outprefix anl/table/abundance.cufflinks"
         " --gene2desc {config[anno_gene2desc]}"
         " --tran2desc {config[anno_tran2desc]}"
+        " --gene2go {config[anno_gene2go]}"
+        " --tran2go {config[anno_tran2go]}"
 
 rule cuffquant:
     input:
