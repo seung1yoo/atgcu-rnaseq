@@ -119,10 +119,12 @@ rule parse_star_align_summary:
     message: "parse_star_align_summary is being run"
     params:
         outprefix="anl/table/alignment_stats.star",
-        target_dir="anl/star"
+        target_dir="anl/star",
+        samples=expand("{sample}", sample=config['sample_names'])
     shell:
         "python workflow/scripts/parser.py star"
         " --outprefix {params.outprefix}"
         " --target-dir {params.target_dir}"
+        " --sample-id-s {params.samples}"
         " > {log} 2>&1"
 

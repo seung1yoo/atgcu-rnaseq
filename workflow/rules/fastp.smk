@@ -28,12 +28,14 @@ rule parse_fastp_raw:
     params:
         outprefix="anl/table/sequencing_stats.raw",
         target_dir="anl/fastp",
-        target_tag="before_filtering"
+        target_tag="before_filtering",
+        samples=expand("{sample}", sample=config['sample_names'])
     shell:
         "python workflow/scripts/parser.py fastp"
         " --outprefix {params.outprefix}"
         " --target-dir {params.target_dir}"
         " --target-tag {params.target_tag}"
+        " --sample-id-s {params.samples}"
         " > {log} 2>&1"
 
 rule parse_fastp_clean:
@@ -47,11 +49,13 @@ rule parse_fastp_clean:
     params:
         outprefix="anl/table/sequencing_stats.clean",
         target_dir="anl/fastp",
-        target_tag="after_filtering"
+        target_tag="after_filtering",
+        samples=expand("{sample}", sample=config['sample_names'])
     shell:
         "python workflow/scripts/parser.py fastp"
         " --outprefix {params.outprefix}"
         " --target-dir {params.target_dir}"
         " --target-tag {params.target_tag}"
+        " --sample-id-s {params.samples}"
         " > {log} 2>&1"
 

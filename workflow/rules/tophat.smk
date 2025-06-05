@@ -75,11 +75,13 @@ rule parse_tophat_align_summary:
     message: "parse_tophat_align_summary is being run"
     params:
         outprefix="anl/table/alignment_stats.tophat",
-        target_dir="anl/tophat"
+        target_dir="anl/tophat",
+        samples=expand("{sample}", sample=config['sample_names'])
     shell:
         "python workflow/scripts/parser.py tophat"
         " --outprefix {params.outprefix}"
         " --target-dir {params.target_dir}"
+        " --sample-id-s {params.samples}"
         " > {log} 2>&1"
 
 

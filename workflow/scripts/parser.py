@@ -314,11 +314,12 @@ class Fastp:
         self.outprefix = outprefix
         self.json_path_dic = dict()
 
-    def find_json_path(self, target_dir):
+    def find_json_path(self, target_dir, sample_id_s):
         for json_path in Path(target_dir).rglob("*.fastp.json"):
             sample_name = json_path.parts[-1].replace(".fastp.json", "")
-            logging.info(f"Found {str(json_path)} of {sample_name}")
-            self.json_path_dic.setdefault(sample_name, json.load(json_path.open("r")))
+            if sample_name in sample_id_s:
+                logging.info(f"Found {str(json_path)} of {sample_name}")
+                self.json_path_dic.setdefault(sample_name, json.load(json_path.open("r")))
         return 1
 
     def write_summary_tsv(self, tag):
@@ -364,14 +365,14 @@ class Fastp:
 
 
 class Tophat:
-    def __init__(self, wkdir, outprefix, target_dir):
+    def __init__(self, wkdir, outprefix, target_dir, sample_id_s):
         self.wkdir = Path(wkdir)
         self.input_read_type = None
 
         # parse align_summary.txt files
         self.align_summary_path_dic = dict()
         self.align_summary_info_dic = dict()
-        self.find_align_summary_path(target_dir)
+        self.find_align_summary_path(target_dir, sample_id_s)
         self.parse_align_summary_path()
         self.write_align_summary_tsv(Path(f"{outprefix}.xls"))
 
@@ -480,11 +481,12 @@ class Tophat:
         logging.debug(self.align_summary_info_dic)
         return 1
 
-    def find_align_summary_path(self, tophat_dir):
+    def find_align_summary_path(self, tophat_dir, sample_id_s):
         for align_summary_path in Path(tophat_dir).rglob("*/align_summary.txt"):
             sample_name = align_summary_path.parts[-2]
-            logging.info(f"Found {str(align_summary_path)} of {sample_name}")
-            self.align_summary_path_dic.setdefault(sample_name, align_summary_path)
+            if sample_name in sample_id_s:
+                logging.info(f"Found {str(align_summary_path)} of {sample_name}")
+                self.align_summary_path_dic.setdefault(sample_name, align_summary_path)
         return 1
 
 
@@ -1184,14 +1186,14 @@ class Cuffdiff:
 
 
 class STAR:
-    def __init__(self, wkdir, outprefix, target_dir):
+    def __init__(self, wkdir, outprefix, target_dir, sample_id_s):
         self.wkdir = Path(wkdir)
         self.input_read_type = None
 
         # parse Log.final.out files
         self.align_summary_path_dic = dict()
         self.align_summary_info_dic = dict()
-        self.find_align_summary_path(target_dir)
+        self.find_align_summary_path(target_dir, sample_id_s)
         self.parse_align_summary_path()
         self.write_align_summary_tsv(Path(f"{outprefix}.xls"))
 
@@ -1214,11 +1216,12 @@ class STAR:
         return 1
 
 
-    def find_align_summary_path(self, _dir):
+    def find_align_summary_path(self, _dir, sample_id_s):
         for align_summary_path in Path(_dir).rglob("*/Log.final.out"):
             sample_name = align_summary_path.parts[-2]
-            logging.info(f"Found {str(align_summary_path)} of {sample_name}")
-            self.align_summary_path_dic.setdefault(sample_name, align_summary_path)
+            if sample_name in sample_id_s:
+                logging.info(f"Found {str(align_summary_path)} of {sample_name}")
+                self.align_summary_path_dic.setdefault(sample_name, align_summary_path)
         return 1
 
     def parse_align_summary_path(self):
@@ -1463,16 +1466,16 @@ def main(args):
     if args.biotool in ['fastp']:
 
         fastp = Fastp(args.wkdir, args.outprefix)
-        fastp.find_json_path(args.target_dir)
+        fastp.find_json_path(args.target_dir, args.sample_id_s)
         fastp.write_summary_tsv(args.target_tag)
 
     elif args.biotool in ['tophat']:
 
-        tophat = Tophat(args.wkdir, args.outprefix, args.target_dir)
+        tophat = Tophat(args.wkdir, args.outprefix, args.target_dir, args.sample_id_s)
 
     elif args.biotool in ['star']:
 
-        star= STAR(args.wkdir, args.outprefix, args.target_dir)
+        star= STAR(args.wkdir, args.outprefix, args.target_dir, args.sample_id_s)
 
     elif args.biotool in ['cufflinks']:
 
@@ -1603,14 +1606,17 @@ if __name__=='__main__':
     subparser.add_argument("--outprefix", default="MultiParser.Fastp.Raw") # MultiParser.Fastp.Clean if cleanfastq
     subparser.add_argument("--target-dir", default="readyfastq") # cleanfastq
     subparser.add_argument("--target-tag", default="after_filtering", choices=("after_filtering", "before_filtering"))
+    subparser.add_argument("--sample-id-s", nargs="+", default=[])
 
     subparser = subparsers.add_parser("tophat")
     subparser.add_argument("--outprefix", default="MultiParser.Tophat")
     subparser.add_argument("--target-dir", default="anl/tophat")
+    subparser.add_argument("--sample-id-s", nargs="+", default=[])
 
     subparser = subparsers.add_parser("star")
     subparser.add_argument("--outprefix", default="MultiParser.STAR")
     subparser.add_argument("--target-dir", default="anl/star")
+    subparser.add_argument("--sample-id-s", nargs="+", default=[])
 
     subparser = subparsers.add_parser("cufflinks")
     subparser.add_argument("--outprefix", default="MultiParser.Cufflinks")
